@@ -34,11 +34,11 @@ public class Paint {
         //получаем результат.
         return screen.toString();
         }
-    public String leftTrl(int height) {
-        /**
-         * @param height - height of our left triangle
-         * @return - painted left triangle
-         */
+    /**
+     * @param height - height of our left triangle
+     * @return - painted left triangle
+     */
+        public String leftTrl(int height) {
         StringBuilder screen = new StringBuilder();
         int weight = height;
         for (int row = 0; row != height; row++) {
@@ -53,11 +53,11 @@ public class Paint {
         }
         return screen.toString();
     }
+    /**
+     * @param height - height of our whole triangle
+     * @return - painted triangle
+     */
     public String pyramid(int height) {
-        /**
-         * @param height - height of our whole triangle
-         * @return - painted triangle
-         */
         StringBuilder screen = new StringBuilder();
         int weight = 2 * height - 1;
         for (int row = 0; row != height; row++) {

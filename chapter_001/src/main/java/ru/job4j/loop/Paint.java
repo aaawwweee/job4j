@@ -1,9 +1,10 @@
 package ru.job4j.loop;
+import java.util.function.BiPredicate;
 
 /**
- * Triangle
+ * Triangle (with refactoring)
  * @author Alexander Kashkin (kashkinmsk@gmail.com).
- * @version 1.
+ * @version 2.
  * @since 04.01.2019.
  */
 public class Paint {
@@ -11,58 +12,42 @@ public class Paint {
      * @param height - height of our right triangle
      * @return - painted right triangle
      */
-    public String rightTrl(int height){
-        //Буфер для результата
-        StringBuilder screen = new StringBuilder();
-        //ширина будет равно высоте.
-        int weight = height;
-        //внешний цикл двигается по строкам
-        for (int row = 0; row !=height; row++) {
-            // внутренний цикл определяет положение ячейки в строке.
-            for (int column = 0; column != weight;column++){
-                //если строка равна ячейки, то риусем галку.
-                //в данном случае случае строка определяет, сколько галок будет на строке
-                if (row >= column) {
-                    screen.append("^");
-                }else {
-                    screen.append(" ");
-                }
-                }
-            //добавляем перевод строки.
-            screen.append(System.lineSeparator());
-            }
-        //получаем результат.
-        return screen.toString();
-        }
+    public String rightTrl(int height) {
+        return this.loopBy(
+                height,
+                height,
+                (row, column) -> row >= column
+        );
+    }
+
     /**
      * @param height - height of our left triangle
      * @return - painted left triangle
      */
-        public String leftTrl(int height) {
-        StringBuilder screen = new StringBuilder();
-        int weight = height;
-        for (int row = 0; row != height; row++) {
-            for (int column = 0; column != weight; column++) {
-                if (row >= weight - column - 1) {
-                    screen.append("^");
-                } else {
-                    screen.append(" ");
-                }
-            }
-            screen.append(System.lineSeparator());
-        }
-        return screen.toString();
+    public String leftTrl(int height) {
+        return this.loopBy(
+                height,
+                height,
+                (row, column) -> row >= height - column - 1
+        );
     }
+
     /**
      * @param height - height of our whole triangle
      * @return - painted triangle
      */
     public String pyramid(int height) {
+        return this.loopBy(
+                height,
+                2 * height - 1,
+                (row, column) -> row >= height - column - 1 && row + height - 1 >= column
+        );
+    }
+    private String loopBy(int height, int weight, BiPredicate<Integer, Integer> predict) {
         StringBuilder screen = new StringBuilder();
-        int weight = 2 * height - 1;
         for (int row = 0; row != height; row++) {
             for (int column = 0; column != weight; column++) {
-                if (row >= height - column - 1 && row + height - 1 >= column) {
+                if (predict.test(row, column)) {
                     screen.append("^");
                 } else {
                     screen.append(" ");
@@ -72,4 +57,4 @@ public class Paint {
         }
         return screen.toString();
     }
-    }
+}

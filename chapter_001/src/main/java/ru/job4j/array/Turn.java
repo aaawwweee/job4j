@@ -19,5 +19,5 @@ public class Turn {
             b[b.length - i - 1] = temp;
         }
         return  b;
-        }
     }
+}

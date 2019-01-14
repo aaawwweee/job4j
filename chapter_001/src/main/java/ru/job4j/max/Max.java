@@ -13,7 +13,7 @@ public class Max {
      * @param second - second
      * @return - max of 2
      */
-    public int max(int first, int second){
+    public int max(int first, int second) {
         return (first > second) ? first : second;
     }
 
@@ -25,6 +25,6 @@ public class Max {
      * @return - max of 3
      */
     public int max(int first, int second, int third) {
-        return max(max (first, second), third);
+        return max(max(first, second), third);
 }
 }

@@ -13,10 +13,10 @@ public class FindLoop {
      * @param el - нужное число
      * @return - вернуть нужное число, если его нет, то -1
      */
-    public int Index0f(int[] data, int el){
+    public int index0f(int[] data, int el) {
         int rst = -1;
-        for (int index = 0; index < data.length; index++){
-            if (data[index] == el){
+        for (int index = 0; index < data.length; index++) {
+            if (data[index] == el) {
                 rst = index;
                 break;
             }

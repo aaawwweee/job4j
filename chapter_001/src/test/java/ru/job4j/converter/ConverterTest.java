@@ -36,9 +36,9 @@ public class ConverterTest {
      */
     @Test
     public void when1DollarToRubleThen69() {
-        Converter converter = new Converter ();
+        Converter converter = new Converter();
         int result = converter.dollarToRuble(1);
-        assertThat(result, is (69));
+        assertThat(result, is(69));
     }
 
     /**
@@ -46,7 +46,7 @@ public class ConverterTest {
      */
     @Test
     public void when1EuroToRubleThen80() {
-        Converter converter = new Converter ();
+        Converter converter = new Converter();
         int result = converter.euroToRuble(1);
         assertThat(result, is(80));
     }

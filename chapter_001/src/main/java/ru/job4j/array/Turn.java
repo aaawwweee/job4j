@@ -11,9 +11,9 @@ public class Turn {
      * @param b - array
      * @return - newArray
      */
-    public int [] array(int [] b) {
+    public int[] array(int[] b) {
         int temp;
-        for (int i = 0; i < b.length/2; i++) {
+        for (int i = 0; i < b.length / 2; i++) {
             temp = b[i];
             b[i] = b[b.length - i - 1];
             b[b.length - i - 1] = temp;

@@ -6,14 +6,14 @@ import static org.junit.Assert.assertThat;
 
 public class FactorialTest {
     @Test
-    public void Factorialfrom5Then120() {
+    public void factorialFrom5Then120() {
         Factorial fact = new Factorial();
         int result = fact.calculateFactorial(5);
         int expect = 120;
         assertThat(result, is(expect));
     }
     @Test
-    public void Factorialfrom0then1() {
+    public void factorialFrom0Then1() {
         Factorial fact = new Factorial();
         int result = fact.calculateFactorial(0);
         int expect = 1;

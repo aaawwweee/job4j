@@ -11,10 +11,10 @@ public class Triangle {
     private Point b;
     private Point c;
 
-    public Triangle(Point a, Point b, Point c){
-        this.a=a;
-        this.b=b;
-        this.c=c;
+    public Triangle(Point a, Point b, Point c) {
+        this.a = a;
+        this.b = b;
+        this.c = c;
     }
     /**
      * Метод вычисления полупериметра по длинам сторон.
@@ -29,7 +29,7 @@ public class Triangle {
      * @return Перимент.
      */
     public double period(double ab, double ac, double bc) {
-        return (ab + ac + bc)/2; // вместо -1 нужно написать формулу вычисляющую полуперимент.
+        return (ab + ac + bc) / 2; // вместо -1 нужно написать формулу вычисляющую полуперимент.
     }
     /**
      * Метод должен вычислить площадь треугольника.

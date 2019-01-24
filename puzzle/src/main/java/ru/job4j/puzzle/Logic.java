@@ -69,20 +69,26 @@ public class Logic {
     public boolean isWin() {
         int[][] table = this.convert();
         boolean result = false;
-        for (int i = 0; i != table.length; i++) {
-            if ((table[0][i] == 1 && table[1][i] == 1
-                    & table[2][i] == 1 & table[3][i] == 1
-                    && table[4][i] == 1)
-                    ||
-                    (table[i][0] == 1 && table[i][1] == 1 && table[i][2] == 1
-                            && table[i][3] == 1 && table[i][4] == 1)) {
-                result = true;
+        for (int i = 0; i < table.length; i++) {
+            int cell = 0;
+            int row = 0;
+            for (int j = 0; j < table.length; j++) {
+                if (table[i][j] == 1) {
+                    row++;
+                }
+                if (table[j][i] == 1) {
+                    cell++;
+                }
+                if (cell == table.length || row == table.length) {
+                    result = true;
+                    break;
+                }
             }
         }
         return result;
     }
 
-    public int[][] convert() {
+   public int[][] convert() {
         int[][] table = new int[this.size][this.size];
         for (int row = 0; row != table.length; row++) {
             for (int cell = 0; cell != table.length; cell++) {

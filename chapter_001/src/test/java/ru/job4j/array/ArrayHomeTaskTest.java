@@ -35,4 +35,24 @@ public class ArrayHomeTaskTest {
         int[] result = arrayHomeTask.sort(a, b);
         assertThat(result, is(expected));
     }
+
+    @Test
+    public void sortFourth() {
+        int[] a = new int[] {-5, 2, 7};
+        int[] b = new int[] {-10, 6, 7, 8, 9, 32, 55};
+        int[] expected = new int[] {-10, -5, 2, 6, 7, 7, 8, 9, 32, 55};
+        ArrayHomeTask arrayHomeTask = new ArrayHomeTask();
+        int[] result = arrayHomeTask.sort(a, b);
+        assertThat(result, is(expected));
+    }
+
+    @Test
+    public void sortFifth() {
+        int[] a = new int[] {-11, -5, 0, 45, 89, 90, 1555};
+        int[] b = new int[] {-22, -21, 4, 44};
+        int[] expected = new int[] {-22, -21, -11, -5, 0, 4, 44, 45, 89, 90, 1555};
+        ArrayHomeTask arrayHomeTask = new ArrayHomeTask();
+        int[] result = arrayHomeTask.sort(a, b);
+        assertThat(result, is(expected));
+    }
 }

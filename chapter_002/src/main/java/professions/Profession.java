@@ -1,8 +1,8 @@
 package professions;
 
 public class Profession {
-    String name;
-    String profession;
+    private String name;
+    private String profession;
     public Profession() {
     }
     public Profession(String name, String profession) {

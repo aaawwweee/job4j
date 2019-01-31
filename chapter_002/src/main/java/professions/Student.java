@@ -1,5 +1,5 @@
 package professions;
 
 public class Student {
-    String name;
+    private String name;
 }

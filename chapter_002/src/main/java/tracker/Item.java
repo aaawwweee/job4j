@@ -12,23 +12,18 @@ public class Item {
         this.desc = desc;
         this.created = created;
     }
-
     public String getName() {
         return name;
     }
-
     public String getDesc() {
         return desc;
     }
-
     public long getCreated() {
         return created;
     }
-
     public String getId() {
         return id;
     }
-
     public void setId(String id) {
         this.id = id;
     }

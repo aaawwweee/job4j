@@ -22,7 +22,7 @@ public class StartUI {
 
     private void showMenu() {
         System.out.println("0. Add new Item\n"
-                + "1.Show all items\n"
+                + "1. Show all items\n"
                 + "2. Edit Item\n"
                 + "3. Delete item\n"
                 + "4. Find items by Id\n"

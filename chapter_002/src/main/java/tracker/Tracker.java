@@ -53,10 +53,10 @@ public class Tracker {
         for (int i = 0; i < position; i++) {
             if (this.items[i].getId().equals(id)) {
                 System.arraycopy(this.items, i + 1, this.items, i, position - 1 - i);
+                position--;
                 result = true;
                 break;
             }
-            i++;
         }
         return result;
     }
@@ -88,7 +88,7 @@ public class Tracker {
     public Item findById(String id) {
         Item result = null;
         for (int i = 0; i < position; i++) {
-            if (this.items[i].getId().equals(id)) {
+            if (this.items[i] != null && this.items[i].getId().equals(id)) {
                 result = this.items[i];
                 break;
             }

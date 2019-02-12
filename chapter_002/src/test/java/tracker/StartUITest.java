@@ -4,8 +4,45 @@ import org.junit.Test;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertThat;
+import org.junit.Before;
+import org.junit.After;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 
 public class StartUITest {
+    private final PrintStream stdout = System.out;
+    private final ByteArrayOutputStream out = new ByteArrayOutputStream();
+
+    @Before
+    public void loadOutPut() {
+        System.out.println("execute before method");
+        System.setOut(new PrintStream(this.out));
+    }
+    @After
+    public void backOutPut() {
+        System.setOut(this.stdout);
+        System.out.println("execute after method");
+    }
+
+    @Test
+    public void showAllItems() {
+        Tracker tracker = new Tracker();
+        for (int i = 0; i < 8; i++) {
+            tracker.add(new Item("test" + i, "desc" + i, 2018L));
+        }
+        Input input = new StubInput(new String[]{"1", "6"});
+        new StartUI(input, tracker).init();
+        assertThat(tracker.findAll(), is(tracker.findAll()));
+    }
+    @Test
+    public void findById() {
+        Tracker tracker = new Tracker();
+        Item item = tracker.add(new Item("test", "desc", 2018L));
+        Input input = new StubInput(new String[]{"4", item.getId(), "6"});
+        new StartUI(input, tracker).init();
+        assertThat(tracker.findById(item.getId()), is(item));
+    }
+
     @Test
     public void addNewItemInTracker() {
         Tracker tracker = new Tracker();

@@ -12,27 +12,40 @@ import java.io.PrintStream;
 public class StartUITest {
     private final PrintStream stdout = System.out;
     private final ByteArrayOutputStream out = new ByteArrayOutputStream();
+    private final String newLine = System.getProperty("line.separator");
+    private final String menus = new StringBuilder()
+            .append("0. Add new Item").append(newLine)
+            .append("1. Show all items").append(newLine)
+            .append("2. Edit item").append(newLine)
+            .append("3. Delete item").append(newLine)
+            .append("4. Find item by Id").append(newLine)
+            .append("5. Find item by Name").append(newLine)
+            .append("6. Exit Program").append(newLine)
+            .toString();
 
-    @Before
-    public void loadOutPut() {
+    public void loadOutput() {
         System.out.println("execute before method");
         System.setOut(new PrintStream(this.out));
     }
     @After
-    public void backOutPut() {
+    public void backOutput() {
         System.setOut(this.stdout);
         System.out.println("execute after method");
     }
-
     @Test
     public void showAllItems() {
         Tracker tracker = new Tracker();
-        for (int i = 0; i < 8; i++) {
-            tracker.add(new Item("test" + i, "desc" + i, 2018L));
-        }
+        Item item = tracker.add(new Item("test", "desc", 2018L));
         Input input = new StubInput(new String[]{"1", "6"});
         new StartUI(input, tracker).init();
-        assertThat(tracker.findAll(), is(tracker.findAll()));
+        assertThat(new String(out.toByteArray()),
+                is(
+                        new StringBuilder()
+                                .append(menus)
+                                .append("ID заявки: " + item.getId() + " " + "Имя заявки: " + item.getName() + " Описание заявки: " + item.getDesc()).append(newLine)
+                                .append(menus)
+                                .toString()
+                ));
     }
     @Test
     public void findById() {

@@ -25,8 +25,8 @@ public class StartUI {
                 + "1. Show all items\n"
                 + "2. Edit Item\n"
                 + "3. Delete item\n"
-                + "4. Find items by Id\n"
-                + "5. Find item by names\n"
+                + "4. Find item by Id\n"
+                + "5. Find item by Name\n"
                 + "6. Exit Program\n");
     }
 
@@ -42,7 +42,7 @@ public class StartUI {
     private void showItems() {
         Item[] items = this.tracker.findAll();
         for (Item item : items) {
-            System.out.println("ID заявки:" + item.getId() + " " + "Имя заявки:" + item.getName() + " Описание заявки: ");
+            System.out.println("ID заявки: " + item.getId() + " " + "Имя заявки: " + item.getName() + " Описание заявки: " + item.getDesc());
         }
     }
 

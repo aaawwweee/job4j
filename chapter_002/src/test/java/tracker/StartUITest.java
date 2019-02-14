@@ -14,15 +14,15 @@ public class StartUITest {
     private final ByteArrayOutputStream out = new ByteArrayOutputStream();
     private final String newLine = System.getProperty("line.separator");
     private final String menus = new StringBuilder()
-            .append("0. Add new Item").append(newLine)
-            .append("1. Show all items").append(newLine)
-            .append("2. Edit item").append(newLine)
-            .append("3. Delete item").append(newLine)
-            .append("4. Find item by Id").append(newLine)
-            .append("5. Find item by Name").append(newLine)
-            .append("6. Exit Program").append(newLine)
-            .toString();
+            .append("0. Add new Item\n")
+            .append("1. Show all Items\n")
+            .append("2. Edit Item\n")
+            .append("3. Delete Item\n")
+            .append("4. Find Item by Id\n")
+            .append("5. Find Item by Name\n")
+            .append("6. Exit Program\n").toString();
 
+    @Before
     public void loadOutput() {
         System.out.println("execute before method");
         System.setOut(new PrintStream(this.out));
@@ -41,9 +41,9 @@ public class StartUITest {
         assertThat(new String(out.toByteArray()),
                 is(
                         new StringBuilder()
-                                .append(menus)
+                                .append(menus).append(newLine)
                                 .append("ID заявки: " + item.getId() + " " + "Имя заявки: " + item.getName() + " Описание заявки: " + item.getDesc()).append(newLine)
-                                .append(menus)
+                                .append(menus).append(newLine)
                                 .toString()
                 ));
     }
@@ -53,7 +53,15 @@ public class StartUITest {
         Item item = tracker.add(new Item("test", "desc", 2018L));
         Input input = new StubInput(new String[]{"4", item.getId(), "6"});
         new StartUI(input, tracker).init();
-        assertThat(tracker.findById(item.getId()), is(item));
+        assertThat(new String(out.toByteArray()),
+                is(
+                        new StringBuilder()
+                                .append(menus).append(newLine)
+                                .append("---------- Поиск заявки по ID ----------").append(newLine)
+                                .append("ID заявки: " + item.getId() + " Имя заявки: " + item.getName() + " Описание заявки: " + item.getDesc()).append(newLine)
+                                .append(menus).append(newLine)
+                                .toString()
+                ));
     }
 
     @Test

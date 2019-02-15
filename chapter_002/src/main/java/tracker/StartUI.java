@@ -14,6 +14,7 @@ public class StartUI {
     private static final String EXIT = "6";
     private final Input input;
     private final Tracker tracker;
+    private final String newLine = System.getProperty("line.separator");
 
     public StartUI(Input input, Tracker tracker) {
         this.input = input;
@@ -21,13 +22,13 @@ public class StartUI {
     }
 
     private void showMenu() {
-        System.out.println("0. Add new Item\n"
-                + "1. Show all Items\n"
-                + "2. Edit Item\n"
-                + "3. Delete Item\n"
-                + "4. Find Item by Id\n"
-                + "5. Find Item by Name\n"
-                + "6. Exit Program\n");
+        System.out.println("0. Add new Item" + newLine
+                + "1. Show all Items" + newLine
+                + "2. Edit Item" + newLine
+                + "3. Delete Item" + newLine
+                + "4. Find Item by Id" + newLine
+                + "5. Find Item by Name" + newLine
+                + "6. Exit Program" + newLine);
     }
 
     private void createItem() {

@@ -14,13 +14,14 @@ public class StartUITest {
     private final ByteArrayOutputStream out = new ByteArrayOutputStream();
     private final String newLine = System.getProperty("line.separator");
     private final String menus = new StringBuilder()
-            .append("0. Add new Item\n")
-            .append("1. Show all Items\n")
-            .append("2. Edit Item\n")
-            .append("3. Delete Item\n")
-            .append("4. Find Item by Id\n")
-            .append("5. Find Item by Name\n")
-            .append("6. Exit Program\n").toString();
+            .append("0. Add new Item").append(newLine)
+            .append("1. Show all Items").append(newLine)
+            .append("2. Edit Item").append(newLine)
+            .append("3. Delete Item").append(newLine)
+            .append("4. Find Item by Id").append(newLine)
+            .append("5. Find Item by Name").append(newLine)
+            .append("6. Exit Program").append(newLine)
+            .toString();
 
     @Before
     public void loadOutput() {

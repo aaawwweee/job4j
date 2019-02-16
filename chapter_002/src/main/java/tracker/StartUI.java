@@ -88,25 +88,11 @@ public class StartUI {
         }
     }
         public void init() {
-            boolean exit = false;
-            while (!exit) {
-                this.showMenu();
-                String answer = this.input.ask("Select:");
-                if (ADD.equals(answer)) {
-                    this.createItem();
-                } else if (SHOWALL.equals(answer)) {
-                    this.showItems();
-                } else if (EDIT.equals(answer)) {
-                    this.editItems();
-                } else if (FINDBYID.equals(answer)) {
-                    this.findItemById();
-                } else if (DELETE.equals(answer)) {
-                    this.deleteItems();
-                } else if (FINDBYNAME.equals(answer)) {
-                    this.findItemsByName();
-                } else if (EXIT.equals(answer)) {
-                    exit = true;
-                }
-            }
+        MenuTracker menu = new MenuTracker(this.input, this.tracker);
+        menu.fillActions();
+        do {
+            menu.show();
+            menu.select(Integer.valueOf(input.ask("Select:")));
+        } while (!"y".equals(this.input.ask("Exit?(y):")));
         }
     }

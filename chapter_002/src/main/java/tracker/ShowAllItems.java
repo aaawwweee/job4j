@@ -15,5 +15,4 @@ public class ShowAllItems implements UserAction {
     public String info() {
         return String.format("%s. %s", this.key(), "Show all Items");
     }
-
 }

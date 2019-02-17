@@ -1,5 +1,4 @@
 package tracker;
-
 public class Item {
     private String name;
     private String id;
@@ -7,7 +6,7 @@ public class Item {
     private long created;
     private String[] comments;
 
-    public Item(String name, String desc){
+    public Item(String name, String desc) {
         this.name = name;
         this.desc = desc;
     }

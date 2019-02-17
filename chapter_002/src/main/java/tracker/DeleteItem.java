@@ -6,7 +6,7 @@ public class DeleteItem implements UserAction {
         return 3;
     }
     @Override
-    public void execute( Input input, Tracker tracker) {
+    public void execute(Input input, Tracker tracker) {
         System.out.println("---------- Delete Item ----------");
         String id = input.ask("Please, provide Item's ID: ");
         if (tracker.delete(id)) {
@@ -17,6 +17,6 @@ public class DeleteItem implements UserAction {
     }
     @Override
     public String info() {
-        return String.format("%s. %s", this.key(), "Delete item");
+        return String.format("%s. %s", this.key(), "Delete Item");
     }
 }

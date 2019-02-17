@@ -18,7 +18,7 @@ public class StartUITest {
             .append("1. Show all Items").append(newLine)
             .append("2. Edit Item").append(newLine)
             .append("3. Delete Item").append(newLine)
-            .append("4. Find Item by Id").append(newLine)
+            .append("4. Find Item by ID").append(newLine)
             .append("5. Find Item by Name").append(newLine)
             .append("6. Exit Program").append(newLine)
             .toString();
@@ -42,9 +42,10 @@ public class StartUITest {
         assertThat(new String(out.toByteArray()),
                 is(
                         new StringBuilder()
-                                .append(menus).append(newLine)
-                                .append("ID заявки: " + item.getId() + " " + "Имя заявки: " + item.getName() + " Описание заявки: " + item.getDesc()).append(newLine)
-                                .append(menus).append(newLine)
+                                .append(menus)
+                                .append("Item's ID: " + item.getId() + " " + "Item's Name: " + item.getName() + " Item's description: " + item.getDesc()).append(newLine)
+                                .append(menus)
+                                .append("You have chosen item 6 - Exit. GoodBye!").append(newLine)
                                 .toString()
                 ));
     }
@@ -57,10 +58,11 @@ public class StartUITest {
         assertThat(new String(out.toByteArray()),
                 is(
                         new StringBuilder()
-                                .append(menus).append(newLine)
-                                .append("---------- Поиск заявки по ID ----------").append(newLine)
-                                .append("ID заявки: " + item.getId() + " Имя заявки: " + item.getName() + " Описание заявки: " + item.getDesc()).append(newLine)
-                                .append(menus).append(newLine)
+                                .append(menus)
+                                .append("---------- Find Item by ID ----------").append(newLine)
+                                .append("Item's ID: " + item.getId() + " Item's Name: " + item.getName() + " Item's description: " + item.getDesc()).append(newLine)
+                                .append(menus)
+                                .append("You have chosen item 6 - Exit. GoodBye!").append(newLine)
                                 .toString()
                 ));
     }

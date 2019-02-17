@@ -1,5 +1,4 @@
 package tracker;
-
 import java.util.*;
 
 public class ConsoleInput implements Input {

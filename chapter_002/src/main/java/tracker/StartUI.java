@@ -1,9 +1,11 @@
 package tracker;
-
+import java.util.*;
 public class StartUI {
     public static void main(String[] args) {
-        new StartUI(new ConsoleInput(), new Tracker()).init();
+        new StartUI(new ValidateInput(), new Tracker()).init();
     }
+    MenuTracker menuTracker = new MenuTracker();
+    private int range = menuTracker.getActionsLength();
     private final Input input;
     private final Tracker tracker;
     private boolean working = true;
@@ -17,10 +19,14 @@ public class StartUI {
     }
     public void init() {
         MenuTracker menu = new MenuTracker(this.input, this.tracker);
+        List<Integer> range = new ArrayList<>();
         menu.fillActions(this);
+        for (int i = 0; i < menu.getActionsLength(); i++) {
+            range.add(i);
+        }
         do {
             menu.show();
-            menu.select(Integer.valueOf(input.ask("Select:")));
+            menu.select(input.ask("Select:", range));
         } while (this.working);
         }
     }

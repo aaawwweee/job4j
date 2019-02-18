@@ -3,7 +3,7 @@ package tracker;
 public class MenuTracker {
     private Input input;
     private Tracker tracker;
-    private UserAction[] actions = new UserAction[7];
+    public UserAction[] actions = new UserAction[7];
 
     public MenuTracker(Input input, Tracker tracker) {
         this.tracker = tracker;
@@ -17,6 +17,12 @@ public class MenuTracker {
         this.actions[4] = new FindById();
         this.actions[5] = new FindByName();
         this.actions[6] = new ExitProgram(ui);
+    }
+    public MenuTracker() {
+    }
+
+    public int getActionsLength() {
+        return actions.length;
     }
     public void select(int key) {
         this.actions[key].execute(this.input, this.tracker);

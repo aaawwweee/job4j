@@ -1,14 +1,10 @@
 package tracker;
 
+import java.util.List;
+
 public class StubInput implements Input {
     /**
      * Это поле содержит последовательность ответов пользователя.
-     * Если пользователь
-     * хочет выбрать добавление новой заявки ему нужно ввести:
-     * 0 - выбор пункта меня "добавить новую заявку".
-     * name - имя заявки
-     * desc - описание заявки
-     * y - выйти из трекера.
      */
     private final String[] value;
     /**
@@ -20,6 +16,7 @@ public class StubInput implements Input {
     public StubInput(final String[] value) {
         this.value = value;
     }
+
     /**
      * Давайте рассмотрим, как работает этот метод.
      * у нас есть объект в котором содержатся заранее продуманные ответы.
@@ -31,5 +28,14 @@ public class StubInput implements Input {
     @Override
     public String ask(String question) {
         return this.value[this.position++];
+    }
+
+    public int ask(String question, int[] range) {
+        //throw new UnsupportedOperationException("Unsupported operation");
+        return 0;
+    }
+
+    public int ask(String question, List<Integer> range) {
+        return -2;
     }
 }

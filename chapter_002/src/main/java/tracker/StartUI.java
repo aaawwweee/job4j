@@ -2,7 +2,12 @@ package tracker;
 import java.util.*;
 public class StartUI {
     public static void main(String[] args) {
-        new StartUI(new ValidateInput(), new Tracker()).init();
+        new StartUI(
+                new ValidateInput(
+                        new ConsoleInput()
+                ),
+                new Tracker()
+        ).init();
     }
     MenuTracker menuTracker = new MenuTracker();
     private int range = menuTracker.getActionsLength();

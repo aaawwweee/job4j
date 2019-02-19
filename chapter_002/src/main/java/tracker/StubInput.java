@@ -30,11 +30,6 @@ public class StubInput implements Input {
         return this.value[this.position++];
     }
 
-    public int ask(String question, int[] range) {
-        //throw new UnsupportedOperationException("Unsupported operation");
-        return 0;
-    }
-
     public int ask(String question, List<Integer> range) {
         int key = Integer.valueOf(this.ask(question));
         boolean exist = false;

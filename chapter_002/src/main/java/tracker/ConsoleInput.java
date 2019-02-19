@@ -18,13 +18,9 @@ public class ConsoleInput implements Input {
                 break;
             }
         }
-        if (exist) {
-            return key;
-        } else {
+        if (!exist) {
             throw new MenuOutException("Out of menu range");
         }
-    }
-    public int ask(String question, int[] range) {
-        return 0;
+        return key;
     }
 }

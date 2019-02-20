@@ -1,5 +1,4 @@
 package tracker;
-
 import java.util.*;
 /**
  * @author Alexander Kashkin (kashkinmsk@gmail.com)

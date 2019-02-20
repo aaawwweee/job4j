@@ -13,7 +13,7 @@ public abstract class BaseAction implements UserAction {
         return this.key;
     }
     public String info() {
-        return String.format("%s : %s", this.key, this.name);
+        return String.format("%s. %s", this.key, this.name);
     }
 
 }

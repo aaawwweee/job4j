@@ -1,5 +1,4 @@
 package tracker;
-
 import java.util.List;
 
 public class ValidateInput implements Input {
@@ -11,7 +10,6 @@ public class ValidateInput implements Input {
     public String ask(String question) {
         return this.input.ask(question);
     }
-
     @Override
     public int ask(String question, List<Integer> range) {
         boolean invalid = true;

@@ -1,5 +1,4 @@
 package tracker;
-
 import java.util.List;
 
 public class StubInput implements Input {

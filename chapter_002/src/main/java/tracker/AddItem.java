@@ -1,9 +1,9 @@
 package tracker;
 
-public class AddItem implements UserAction {
-    @Override
-    public int key() {
-        return 0;
+public class AddItem extends BaseAction {
+
+    public AddItem(int key, String name) {
+        super(key, name);
     }
     @Override
     public void execute(Input input, Tracker tracker) {
@@ -15,9 +15,5 @@ public class AddItem implements UserAction {
         System.out.println("---------- New Item with ID: " + item.getId());
         System.out.println("---------- New Item with Name: " + item.getName());
         System.out.println("---------- New Item with Description: " + item.getDesc());
-    }
-    @Override
-    public String info() {
-        return String.format("%s. %s", this.key(), "Add new Item");
     }
 }

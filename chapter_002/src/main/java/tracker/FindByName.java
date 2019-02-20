@@ -1,8 +1,8 @@
 package tracker;
 
-public class FindByName implements UserAction {
-    public int key() {
-        return 5;
+public class FindByName extends BaseAction {
+    public FindByName(int key, String name) {
+        super(key, name);
     }
     public void execute(Input input, Tracker tracker) {
         System.out.println("---------- Find Item by Name ----------");
@@ -15,8 +15,5 @@ public class FindByName implements UserAction {
         } else {
             System.out.println("---------- Item is not found ---------- ");
         }
-    }
-    public String info() {
-        return String.format("%s. %s", this.key(), "Find Item by Name");
     }
 }

@@ -1,9 +1,8 @@
 package tracker;
 
-public class EditItem implements UserAction {
-    @Override
-    public int key() {
-        return 2;
+public class EditItem extends BaseAction {
+    public EditItem(int key, String name) {
+        super(key, name);
     }
     @Override
     public void execute(Input input, Tracker tracker) {
@@ -17,9 +16,5 @@ public class EditItem implements UserAction {
         } else {
             System.out.println("---------- Item is not replaced");
         }
-    }
-    @Override
-    public String info() {
-        return String.format("%s. %s", this.key(), "Edit Item");
     }
 }

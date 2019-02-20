@@ -1,8 +1,8 @@
 package tracker;
 
-public class FindById implements UserAction {
-    public int key() {
-        return 4;
+public class FindById extends BaseAction {
+    public FindById(int key, String name) {
+        super(key, name);
     }
     public void execute(Input input, Tracker tracker) {
         System.out.println("---------- Find Item by ID ----------");
@@ -13,8 +13,5 @@ public class FindById implements UserAction {
         } else {
             System.out.println("---------- Item is not found ---------- ");
         }
-    }
-    public String info() {
-        return String.format("%s. %s", this.key(), "Find Item by ID");
     }
 }

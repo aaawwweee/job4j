@@ -1,9 +1,8 @@
 package tracker;
 
-public class DeleteItem implements UserAction {
-    @Override
-    public int key() {
-        return 3;
+public class DeleteItem extends BaseAction {
+    public DeleteItem(int key, String name) {
+        super(key, name);
     }
     @Override
     public void execute(Input input, Tracker tracker) {
@@ -14,9 +13,5 @@ public class DeleteItem implements UserAction {
         } else {
             System.out.println("----------- Item is not deleted ----------");
         }
-    }
-    @Override
-    public String info() {
-        return String.format("%s. %s", this.key(), "Delete Item");
     }
 }

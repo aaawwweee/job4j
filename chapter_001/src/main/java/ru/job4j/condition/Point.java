@@ -1,44 +1,19 @@
 package ru.job4j.condition;
-
 /**
  * @author Alexander Kashkin
- * @version 1
- * @since 30.12.2018
+ * @since 08.03.2019
+ * @version 2
  */
 public class Point {
-    private int x;
-    private int y;
-
     /**
-     * конструктор
-     * @param x - коорд. x
-     * @param y - коорд. y
+     * @param x1 x1
+     * @param x2 x2
+     * @param y1 y1
+     * @param y2 y2
+     * @return distance
      */
-    public Point(int x, int y) {
-        this.x = x;
-        this.y = y;
+    public double distance(int x1, int x2, int y1, int y2) {
+        double result = Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
+        return result;
     }
-
-    /**
-     * расчет расстояния до точки
-     * @param that - координаты точки
-     * @return - расстояние до точки
-     */
-    public double distanceTo(Point that) {
-        return Math.sqrt(
-                Math.pow(this.x - that.x, 2) + Math.pow(this.y - that.y, 2)
-        );
-    }
-    public static void main(String[] args) {
-        Point a = new Point(0, 1);
-        Point b = new Point(2, 5);
-        System.out.println("x1 = " + a.x);
-        System.out.println("y1 = " + a.y);
-        System.out.println("x2 = " + b.x);
-        System.out.println("y2 = " + b.y);
-
-        double result = a.distanceTo(b);
-        System.out.println("Расстояние между точками А и В : " + result);
-    }
-
 }

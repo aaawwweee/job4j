@@ -1,57 +1,46 @@
 package ru.job4j.calculator;
-
 /**
- * The simplest Calculator
- * @author Alexander Kashkin (kashkinmsk@gmail.com)
+ * @author Alexander Kashkin
+ * @since 07.02.2019
  * @version 1
- * @since 28.12.2018
  */
 public class Calculator {
-    private double result;
-
     /**
-     * Add
+     *
+     * @param first first
+     * @param second second
+     * @return first plus second
+     */
+    public double add(double first, double second) {
+        return first + second;
+    }
+    /**
+     *
      * @param first - first
      * @param second - second
+     * @return first minus second
      */
-
-    public void add(double first, double second) {
-        this.result = first + second;
+    public double subtract(double first, double second) {
+        return first - second;
     }
 
     /**
-     * Div
+     *
      * @param first - first
      * @param second - second
+     * @return fisrt div second
      */
-    public void div(double first, double second) {
-        this.result = first / second;
+    public double div(double first, double second) {
+        return first / second;
     }
 
     /**
-     * Subtract
-     * @param first - first
+     *
+     * @param first - fisrt
      * @param second - second
+     * @return first mult second
      */
-    public void subtract(double first, double second) {
-        this.result = first - second;
-    }
-
-    /**
-     * Multiple
-     * @param first - first
-     * @param second - second
-     */
-    public void multiple(double first, double second) {
-        this.result = first * second;
-    }
-
-    /**
-     * getResult
-     * @return - result
-     */
-    public double getResult() {
-        return this.result;
+    public double multiple(double first, double second) {
+        return first * second;
     }
 }
-

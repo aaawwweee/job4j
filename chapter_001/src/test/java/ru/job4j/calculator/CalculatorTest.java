@@ -1,61 +1,35 @@
 package ru.job4j.calculator;
-
-import org.junit.Test;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
+import org.junit.Test;
 
-/**
- * Test
- * @author Alexander Kashkin (kashkinmsk@gmail.com)
- * @version 1
- * @since 30.12.2018
- */
 public class CalculatorTest {
-    /**
-     * Test Plus
-     */
     @Test
-    public void whenAddOnePlusOneThenTwo() {
-        Calculator calc = new Calculator();
-        calc.add(1D, 1D);
-        double result = calc.getResult();
-        double expected = 2D;
-        assertThat(result, is(expected));
+    public void whenTwentyTwoPlusFiveThenTwentySeven() {
+        Calculator c = new Calculator();
+        double rst = c.add(22D, 5D);
+        double exp = 27D;
+        assertThat(rst,is(exp));
     }
-
-    /**
-     * Test Div
-     */
     @Test
-    public void whenDivTwoOnTwoThenOne() {
-        Calculator calc = new Calculator();
-        calc.div(2D, 2D);
-        double result = calc.getResult();
-        double expected = 1D;
-        assertThat(result, is(expected));
+    public void whenOneMinusOneThenZero() {
+        Calculator c = new Calculator();
+        double rst = c.subtract(1D, 1D);
+        double exp = 0D;
+        assertThat(rst,is(exp));
     }
-
-    /**
-     * Test Multiple
-     */
     @Test
-    public void whenMultipleTwoOnTwoThenFour() {
-        Calculator calc = new Calculator();
-        calc.multiple(2D, 2D);
-        double result = calc.getResult();
-        double expected = 4D;
-        assertThat(result, is(expected));
+    public void whenSixDivSixThenOne() {
+        Calculator c = new Calculator();
+        double rst = c.div(6D, 6D);
+        double exp = 1D;
+        assertThat(rst, is(exp));
     }
-
-    /**
-     * Test Minus
-     */
     @Test
-    public void whenSubtractTwoMinusOneThenOne() {
-        Calculator calc = new Calculator();
-        calc.subtract(2D, 1D);
-        double result = calc.getResult();
-        double expected = 1D;
-        assertThat(result, is(expected));
+    public void whenOneMulSevenThenSeven() {
+        Calculator c = new Calculator();
+        double rst = c.multiple(1D, 7D);
+        double exp = 7D;
+        assertThat(rst, is(exp));
     }
 }

@@ -1,24 +1,23 @@
 package ru.job4j.condition;
 
 /**
- * DummyBot.
- * @author Alexander Kashkin.
- * @since 01.01.2019.
- * @version 1
+ * @author Alexander Kashkin
+ * @since 08.03.2019
+ * @version 2
  */
 public class DummyBot {
     /**
-     * Отвечает на вопросы.
-     * @param question Вопрос от клиента.
-     * @return Ответ.
+     *
+     * @param question from client
+     * @return bot's answer
      */
     public String answer(String question) {
-        String rsl = "Это ставит меня в тупик. Спросите другой вопрос.";
-        if ("Привет, Бот.".equals(question)) {
-            rsl = "Привет, умник.";
-        } else if ("Пока".equals(question)) {
-            rsl = "До скорой встречи.";
+        String rst = "Это ставит меня в тупик. Задайте другой вопрос.";
+        if ("Привет, бот.".equals(question)) {
+            rst = "Привет, умник.";
+        } else if ("Пока.".equals(question)) {
+            rst = "До скорой встречи.";
         }
-        return rsl;
+        return rst;
     }
 }

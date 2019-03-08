@@ -1,53 +1,31 @@
 package ru.job4j.converter;
-
-import org.junit.Test;
-import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
+import static org.hamcrest.core.Is.is;
+import org.junit.Test;
 
-/**
- * Converter Test.
- * @author Alexander Kashkin (kashkinmsk@gmail.com).
- * @version 1.
- * @since 30.12.2018.
- */
 public class ConverterTest {
-    /**
-     * Ruble to euro
-     */
     @Test
-    public void when69RubleToDollarThen1() {
-        Converter converter = new Converter();
-        int result = converter.rubleToDollar(69);
-        assertThat(result, is(1));
+    public void when60RublesThen1Dollar() {
+        Converter conv = new Converter();
+        int rst = conv.rubleToDollar(60);
+        assertThat(rst, is(1));
     }
-
-    /**
-     * Ruble to euro
-     */
     @Test
-    public void when80RubleToEuroThen1() {
-        Converter converter = new Converter();
-        int result = converter.rubleToEuro(80);
-        assertThat(result, is(1));
+    public void when1DollarThen60Rubles() {
+        Converter conv = new Converter();
+        int rst = conv.dollarToRuble(1);
+        assertThat(rst, is(60));
     }
-
-    /**
-     * Dollar to ruble
-     */
     @Test
-    public void when1DollarToRubleThen69() {
-        Converter converter = new Converter();
-        int result = converter.dollarToRuble(1);
-        assertThat(result, is(69));
+    public void when70RublesThen1Euro() {
+        Converter conv = new Converter();
+        int rst = conv.rubleToEuro(70);
+        assertThat(rst, is(1));
     }
-
-    /**
-     * Euro to ruble
-     */
     @Test
-    public void when1EuroToRubleThen80() {
-        Converter converter = new Converter();
-        int result = converter.euroToRuble(1);
-        assertThat(result, is(80));
+    public void when1EuroThen70Rubles() {
+        Converter conv = new Converter();
+        int rst = conv.euroToRuble(1);
+        assertThat(rst, is(70));
     }
 }

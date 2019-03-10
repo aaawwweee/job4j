@@ -45,4 +45,19 @@ public class Paint {
         }
         return screen.toString();
     }
+    public String pyramid(int height) {
+        StringBuilder screen = new StringBuilder();
+        int width = 2 * height - 1;
+        for (int row = 0; row!= height; row++) {
+            for (int col = 0;  col != width; col++) {
+                if (row >= height - col - 1 && row + height - 1 >= col) {
+                    screen.append("^");
+                } else {
+                    screen.append(" ");
+                }
+            }
+            screen.append(System.lineSeparator());
+        }
+        return screen.toString();
+    }
 }

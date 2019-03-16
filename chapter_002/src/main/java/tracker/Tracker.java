@@ -3,7 +3,7 @@ package tracker;
 import java.util.*;
 
 /**
- * @author Alexander Kashkin (kasjkinmsk@gmail.com)
+ * @author Alexander Kashkin (kashkinmsk@gmail.com)
  * @since 16.03.2019
  * @version 1
  */
@@ -38,8 +38,9 @@ public class Tracker {
      */
     public boolean replace(String id, Item item) {
         boolean result = false;
-        for (int i = 0; i < items.length - 1; i++) {
+        for (int i = 0; i != this.position; i++) {
             if (this.items[i].getId().equals(id)) {
+                item.setId(id);
                 this.items[i] = item;
                 result = true;
                 break;
@@ -54,7 +55,7 @@ public class Tracker {
      */
     public boolean delete(String id) {
         boolean result = false;
-        for (int i = 0; i < items.length - 1; i++) {
+        for (int i = 0; i != this.position; i++) {
             if (this.items[i].getId() != null && this.items[i].getId().equals(id)) {
                 System.arraycopy(items, i + 1, items, i, items.length - i - 1);
                 result = true;
@@ -68,11 +69,7 @@ public class Tracker {
      * @return all items
      */
     public Item[] findAll() {
-        Item[] result = new Item[this.position];
-        for (int index = 0; index != this.position; index++) {
-            result[index] = this.items[index];
-        }
-        return result;
+        return Arrays.copyOf(items, position);
     }
 
     /**
@@ -82,7 +79,7 @@ public class Tracker {
     public Item[] findByName(String key) {
         Item[] result = new Item[position];
         int count = 0;
-        for (int i = 0; i != position; i++) {
+        for (int i = 0; i != this.position; i++) {
             if (this.items[i].getName() != null && this.items[i].getName().equals(key)) {
                 result[i] = this.items[i];
                 count++;
@@ -97,9 +94,9 @@ public class Tracker {
      */
     public Item findById(String id) {
         Item result = null;
-        for (Item item : items) {
-            if (item != null && item.getId().equals(id)) {
-                result = item;
+        for (int index = 0; index != position; index++) {
+            if (items[index] != null && items[index].getId().equals(id)) {
+                result = items[index];
                 break;
             }
         }

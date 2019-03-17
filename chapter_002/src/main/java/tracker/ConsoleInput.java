@@ -1,7 +1,6 @@
 package tracker;
 import java.util.Scanner;
 /**
- * interface
  * @author Alexander Kashkin (kashkinmsk@gmail.com)
  * @version 1
  * @since 17.03.2019

@@ -1,7 +1,7 @@
 package tracker;
 /**
  * Entry point to the program
- * @author Alexander Kashkin (kahkinmsk@gmail.com)
+ * @author Alexander Kashkin (kashkinmsk@gmail.com)
  * @version 1
  * @since 17.03.2019
  */

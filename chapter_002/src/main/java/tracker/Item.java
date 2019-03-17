@@ -12,6 +12,10 @@ public class Item {
         this.desc = desc;
         this.time = time;
     }
+    public Item(String name, String desc) {
+        this.name = name;
+        this.desc = desc;
+    }
 
     public String getId() {
         return id;

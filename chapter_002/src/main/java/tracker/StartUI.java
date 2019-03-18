@@ -52,9 +52,10 @@ public class StartUI {
     }
     private void showMenu() {
         System.out.println("Menu. " + nextline + "0. Add new Item" + nextline
-                + "1. Show all Items" + nextline + "3. Delete Item" + nextline
-        + "4. Find Item by ID" + nextline + "5. Find Item by Name" + nextline
-        + "6. Exit program" + nextline);
+                + "1. Show all Items" + nextline + "2. Edit Item" + nextline
+                + "3. Delete Item" + nextline
+                + "4. Find Item by ID" + nextline + "5. Find Item by Name" + nextline
+                + "6. Exit program" + nextline);
     }
     private void createItem() {
         System.out.println("---------- Adding a new Item ----------");

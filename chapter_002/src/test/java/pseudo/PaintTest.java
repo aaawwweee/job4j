@@ -6,10 +6,12 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
+import java.util.StringJoiner;
 
 public class PaintTest {
     private final PrintStream stdout = System.out;
     private final ByteArrayOutputStream out = new ByteArrayOutputStream();
+    String nLine = System.lineSeparator();
 
     @Before
     public void loadOutput() {
@@ -27,12 +29,13 @@ public class PaintTest {
         assertThat(
                 this.out.toString(),
                 is(
-                        new StringBuilder()
-                                .append("+ + + +")
-                                .append("+ + + +")
-                                .append("+ + + +")
-                                .append("+ + + +")
-                                .append(System.lineSeparator())
+                        new StringJoiner(
+                                nLine, "",
+                                nLine)
+                                .add("+ + + +")
+                                .add("+ + + +")
+                                .add("+ + + +")
+                                .add("+ + + +")
                                 .toString()
                 )
         );
@@ -43,11 +46,12 @@ public class PaintTest {
         assertThat(
                 this.out.toString(),
                 is(
-                        new StringBuilder()
-                                .append("  ^  ")
-                                .append(" ^^^ ")
-                                .append("^^^^^")
-                                .append(System.lineSeparator())
+                        new StringJoiner(
+                                nLine, "",
+                                nLine)
+                                .add("  ^  ")
+                                .add(" ^^^ ")
+                                .add("^^^^^")
                                 .toString()
                 )
         );

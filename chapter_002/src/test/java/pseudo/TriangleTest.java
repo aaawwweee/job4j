@@ -7,11 +7,12 @@ public class TriangleTest {
     @Test
     public void whenDrawTriangle() {
         Triangle triangle = new Triangle();
+        String nLine = System.lineSeparator();
         assertThat(
                 triangle.draw(), is(
                         new StringBuilder()
-                        .append("  ^  ")
-                        .append(" ^^^ ")
+                        .append("  ^  ").append(nLine)
+                        .append(" ^^^ ").append(nLine)
                         .append("^^^^^")
                         .toString()
                 )

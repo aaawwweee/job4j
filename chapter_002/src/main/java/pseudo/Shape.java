@@ -6,4 +6,5 @@ package pseudo;
  */
 public interface Shape {
     String draw();
+    String nLine = System.lineSeparator();
 }

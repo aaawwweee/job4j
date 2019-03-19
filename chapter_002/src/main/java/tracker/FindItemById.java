@@ -13,8 +13,12 @@ public class FindItemById implements UserAction {
         System.out.println("---------- Find Item by ID ----------");
         String id = input.ask("Please, enter the Item's ID: ");
         Item item = tracker.findById(id);
-        System.out.println("Item's ID: " + item.getId() + nextLine + "Item's Name: " + item.getName()
-                + nextLine + "Item's description: " + item.getDesc());
+        if (item != null) {
+            System.out.println("Item's ID: " + item.getId() + nextLine + "Item's Name: " + item.getName()
+                    + nextLine + "Item's description: " + item.getDesc());
+        } else {
+            System.out.println("Item not found.");
+        }
     }
     public String info() {
         return "4. Find Item by ID.";

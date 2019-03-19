@@ -21,6 +21,6 @@ public class ShowAllItems implements UserAction {
     }
     @Override
     public String info() {
-        return "1. Show All Items.";
+        return "1. Show all Items.";
     }
 }

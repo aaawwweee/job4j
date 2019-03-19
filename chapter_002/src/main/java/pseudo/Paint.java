@@ -13,5 +13,6 @@ public class Paint {
         Shape square = new Square();
         System.out.println(triangle.draw());
         System.out.println(square.draw());
+        System.out.println();
     }
 }

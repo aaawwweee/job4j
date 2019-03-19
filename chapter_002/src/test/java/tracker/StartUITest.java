@@ -36,7 +36,7 @@ public class StartUITest {
     @Test
     public void whenShowAllItems() {
         Tracker tracker = new Tracker();
-        Item item = tracker.add(new Item ("testname", "testdesc"));
+        Item item = tracker.add(new Item("testname", "testdesc"));
         Input input = new StubInput(new String[] {"1", "6"});
         new StartUI(input, tracker).init();
         assertThat(new String(out.toByteArray()),
@@ -54,7 +54,7 @@ public class StartUITest {
     public void whenFindByName() {
         Tracker tracker = new Tracker();
         Item item = tracker.add(new Item("testname", "testdesc"));
-        Input input = new StubInput(new String[] {"5",item.getName(), "6"});
+        Input input = new StubInput(new String[] {"5", item.getName(), "6"});
         new StartUI(input, tracker).init();
         assertThat(new String(out.toByteArray()),
                 is(

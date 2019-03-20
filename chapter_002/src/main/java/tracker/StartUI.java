@@ -1,4 +1,8 @@
 package tracker;
+
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Entry point to the program
  * @author Alexander Kashkin (kashkinmsk@gmail.com)
@@ -7,7 +11,7 @@ package tracker;
  */
 public class StartUI {
     public static void main(String[] args) {
-        ConsoleInput input = new ConsoleInput();
+        Input input = new ValidateInput();
         Tracker tracker = new Tracker();
         StartUI startUI = new StartUI(input, tracker);
         startUI.init();
@@ -21,10 +25,14 @@ public class StartUI {
     }
     public void init() {
         MenuTracker menu = new MenuTracker(this.input, this.tracker);
+        List<Integer> range = new ArrayList<>();
         menu.fillActions();
+        for (int i = 0;  i < menu.getActionsLength(); i++) {
+            range.add(i);
+        }
         do {
             menu.show();
-            menu.select(Integer.valueOf(input.ask("Select:")));
+            menu.select(input.ask("Select:", range));
         } while (!"y".equals(this.input.ask("Exit?(y): ")));
     }
 }

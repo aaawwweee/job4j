@@ -1,5 +1,7 @@
 package tracker;
 
+import java.util.List;
+
 /**
  * @author Alexander Kashkin
  * @version 1
@@ -7,4 +9,5 @@ package tracker;
  */
 public interface Input {
     String ask(String question);
+    int ask(String question, List<Integer> range);
 }

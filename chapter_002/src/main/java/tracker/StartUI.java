@@ -11,10 +11,12 @@ import java.util.List;
  */
 public class StartUI {
     public static void main(String[] args) {
-        Input input = new ValidateInput();
-        Tracker tracker = new Tracker();
-        StartUI startUI = new StartUI(input, tracker);
-        startUI.init();
+        new StartUI(
+                new ValidateInput(
+                        new ConsoleInput()
+                ),
+                new Tracker()
+        ).init();
     }
     private final Tracker tracker;
     private final Input input;

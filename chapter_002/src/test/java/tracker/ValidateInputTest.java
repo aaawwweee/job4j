@@ -24,10 +24,13 @@ public class ValidateInputTest {
         System.setOut(this.out);
     }
     @Test
-    public void whenInvalidInput() {
-        ValidateInput input = new ValidateInput(
-                new StubInput(new String[] {"invalid", "1"})
-        );
+    public void whenInvalidInputFormat() {
+     //   ValidateInput input = new ValidateInput(
+     //           new StubInput(new String[] {"invalid", "1"})
+     //   );
+        String[] value = new String[] {"invalid", "1"};
+        StubInput stubInput = new StubInput(value);
+        ValidateInput input = new ValidateInput(stubInput);
         List<Integer> range = new ArrayList<>();
         range.add(1);
         input.ask("Enter", range);
@@ -35,6 +38,19 @@ public class ValidateInputTest {
                 this.mem.toString(),
                 is(
                         String.format("Please, enter validate data again.%n")
+                )
+        );
+    }
+    @Test
+    public void whenInvalidInputRange () {
+        ValidateInput input = new ValidateInput(new StubInput(new String[] {"10", "1"}));
+        List<Integer> range = new ArrayList<>();
+        range.add(1);
+        input.ask("Enter", range);
+        assertThat(
+                this.mem.toString(),
+                is(
+                        String.format("Please, select key from menu%n")
                 )
         );
     }

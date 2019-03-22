@@ -15,16 +15,19 @@ public class MenuTracker {
         this.input = input;
         this.tracker = tracker;
     }
+    public MenuTracker(){}
+
     public int getActionsLength() {
         return this.actions.size();
     }
-    public void fillActions() {
+    public void fillActions(StartUI ui) {
         this.actions.add(new AddItem(0, "Add Item."));
         this.actions.add(new ShowAllItems(1, "Show all Items."));
         this.actions.add(new EditItem(2, "Edit Item."));
         this.actions.add(new DeleteItem(3, "Delete Item."));
         this.actions.add(new FindItemById(4, "Find Item by ID."));
         this.actions.add(new FindItemByName(5, "Find Item by Name."));
+        this.actions.add(new ExitTracker(6, "Exit.", ui));
     }
     public void select(int key) {
         this.actions.get(key).execute(this.input, this.tracker);

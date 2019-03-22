@@ -21,6 +21,12 @@ public class StartUI {
     private final Tracker tracker;
     private final Input input;
 
+    private boolean working = true;
+
+    public void stop() {
+        this.working = false;
+    }
+
     public StartUI(Input input, Tracker tracker) {
         this.input = input;
         this.tracker = tracker;
@@ -28,13 +34,13 @@ public class StartUI {
     public void init() {
         MenuTracker menu = new MenuTracker(this.input, this.tracker);
         List<Integer> range = new ArrayList<>();
-        menu.fillActions();
+        menu.fillActions(this);
         for (int i = 0;  i < menu.getActionsLength(); i++) {
             range.add(i);
         }
         do {
             menu.show();
             menu.select(input.ask("Select:", range));
-        } while (!"y".equals(this.input.ask("Exit?(y): ")));
+        } while (this.working);
     }
 }

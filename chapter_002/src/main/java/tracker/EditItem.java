@@ -4,10 +4,13 @@ package tracker;
  * @since 19.03.2019
  * @version 1
  */
-public class EditItem implements UserAction {
-    public int key() {
-        return 2;
+public class EditItem extends BaseAction {
+
+    public EditItem(int key, String name) {
+        super(key, name);
     }
+
+    @Override
     public void execute(Input input, Tracker tracker) {
         System.out.println("---------- Edit the Item ----------");
         String id = input.ask("Please, enter the Item's ID: ");
@@ -20,8 +23,5 @@ public class EditItem implements UserAction {
         } else {
             System.out.println("The Item hasn't been edited");
         }
-    }
-    public String info() {
-        return "2. Edit Item.";
     }
 }

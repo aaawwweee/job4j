@@ -4,11 +4,11 @@ package tracker;
  * @since 19.03.2019
  * @version 1
  */
-public class ShowAllItems implements UserAction {
+public class ShowAllItems extends BaseAction {
     private String nextLine = System.lineSeparator();
-    @Override
-    public int key() {
-        return 1;
+
+    public ShowAllItems(int key, String name) {
+        super(key, name);
     }
     @Override
     public void execute(Input input, Tracker tracker) {
@@ -18,9 +18,5 @@ public class ShowAllItems implements UserAction {
             System.out.println("Item's ID: " + item.getId() + nextLine + "Item's Name: " + item.getName()
                     + nextLine + "Item's description: " + item.getDesc());
         }
-    }
-    @Override
-    public String info() {
-        return "1. Show all Items.";
     }
 }

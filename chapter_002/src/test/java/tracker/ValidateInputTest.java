@@ -42,7 +42,7 @@ public class ValidateInputTest {
         );
     }
     @Test
-    public void whenInvalidInputRange () {
+    public void whenInvalidInputRange() {
         ValidateInput input = new ValidateInput(new StubInput(new String[] {"10", "1"}));
         List<Integer> range = new ArrayList<>();
         range.add(1);

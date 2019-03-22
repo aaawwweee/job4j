@@ -4,11 +4,14 @@ package tracker;
  * @since 19.03.2019
  * @version 1
  */
-public class FindItemById implements UserAction {
+public class FindItemById extends BaseAction {
     private String nextLine = System.lineSeparator();
-    public int key() {
-        return 4;
+
+    public FindItemById(int key, String name) {
+        super(key, name);
     }
+
+    @Override
     public void execute(Input input, Tracker tracker) {
         System.out.println("---------- Find Item by ID ----------");
         String id = input.ask("Please, enter the Item's ID: ");
@@ -19,8 +22,5 @@ public class FindItemById implements UserAction {
         } else {
             System.out.println("Item not found.");
         }
-    }
-    public String info() {
-        return "4. Find Item by ID.";
     }
 }

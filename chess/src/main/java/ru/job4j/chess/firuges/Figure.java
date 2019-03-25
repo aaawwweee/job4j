@@ -8,7 +8,7 @@ package ru.job4j.chess.firuges;
 public interface Figure {
     Cell position();
 
-    Cell[] way(Cell source, Cell dest);
+    Cell[] way(Cell source, Cell dest) throws ImpossibleMoveException;
 
     default String icon() {
         return String.format(

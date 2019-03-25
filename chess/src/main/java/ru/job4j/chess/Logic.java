@@ -1,8 +1,8 @@
 package ru.job4j.chess;
 
-import ru.job4j.chess.firuges.Cell;
-import ru.job4j.chess.firuges.Figure;
+import ru.job4j.chess.firuges.*;
 
+import java.util.Calendar;
 import java.util.Optional;
 
 /**
@@ -20,16 +20,31 @@ public class Logic {
 
     public boolean move(Cell source, Cell dest) {
         boolean rst = false;
-        int index = this.findBy(source);
-        if (index != -1) {
-            Cell[] steps = this.figures[index].way(source, dest);
-            if (steps.length > 0 && steps[steps.length - 1].equals(dest)) {
-                rst = true;
-                this.figures[index] = this.figures[index].copy(dest);
-            }
+        try {
+            rst = this.busyWay(source, dest);
+        } catch (FigureNotFoundException | ImpossibleMoveException | OccupiedWayException ffe) {
+            System.out.println(ffe.getMessage());
         }
         return rst;
     }
+    private boolean busyWay(Cell source, Cell dest) throws FigureNotFoundException, ImpossibleMoveException, OccupiedWayException {
+        boolean rst = false;
+        int index = this.findBy(source);
+        if (index == -1) {
+            throw new FigureNotFoundException("No figure");
+    }
+        Cell[] steps = this.figures[index].way(source, dest);
+        for (Cell step : steps) {
+            if (this.findBy(step) != -1) {
+                throw new OccupiedWayException("The cell is busy");
+            }
+        }
+        if (steps.length > 0 && steps[steps.length - 1].equals(dest)) {
+            rst = true;
+            this.figures[index] = this.figures[index].copy(dest);
+        }
+        return rst;
+}
 
     public void clean() {
         for (int position = 0; position != this.figures.length; position++) {

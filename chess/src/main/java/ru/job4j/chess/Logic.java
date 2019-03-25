@@ -2,9 +2,6 @@ package ru.job4j.chess;
 
 import ru.job4j.chess.firuges.*;
 
-import java.util.Calendar;
-import java.util.Optional;
-
 /**
  * @author Alexander Kashkin (kashkinmsk@gmail.com)
  * @version 1

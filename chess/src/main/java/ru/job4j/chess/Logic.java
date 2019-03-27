@@ -15,26 +15,27 @@ public class Logic {
         this.figures[this.index++] = figure;
     }
 
-    public boolean move(Cell source, Cell dest) {
-        boolean rst = false;
-        try {
-            rst = this.busyWay(source, dest);
-        } catch (FigureNotFoundException | ImpossibleMoveException | OccupiedWayException ffe) {
-            System.out.println(ffe.getMessage());
-        }
-        return rst;
-    }
-    private boolean busyWay(Cell source, Cell dest) throws FigureNotFoundException, ImpossibleMoveException, OccupiedWayException {
+    public boolean move(Cell source, Cell dest) throws FigureNotFoundException, ImpossibleMoveException,
+            OccupiedWayException {
         boolean rst = false;
         int index = this.findBy(source);
         if (index == -1) {
             throw new FigureNotFoundException("No figure");
     }
         Cell[] steps = this.figures[index].way(source, dest);
+        if (steps.length == 0 || !steps[steps.length - 1].equals(dest)) {
+            throw new ImpossibleMoveException("Wrong way");
+        }
+        boolean checkIt = false;
         for (Cell step : steps) {
-            if (this.findBy(step) != -1) {
-                throw new OccupiedWayException("The cell is busy");
+            for (Figure fig : figures) {
+                if (fig.position().equals(step)) {
+                    checkIt = true;
+                }
             }
+        }
+        if (checkIt) {
+            throw new OccupiedWayException("The Cell is busy");
         }
         if (steps.length > 0 && steps[steps.length - 1].equals(dest)) {
             rst = true;

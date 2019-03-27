@@ -23,7 +23,8 @@ public class RookWhite implements Figure {
     }
 
     public Cell[] way(Cell source, Cell dest) throws ImpossibleMoveException {
-        if (BishopBlack.isDiagonal(source, dest)) {
+        BishopBlack bishopBlack = new BishopBlack(source);
+        if (bishopBlack.isDiagonal(source, dest)) {
             throw new ImpossibleMoveException("Wrong way.");
         }
         int length = Math.abs((dest.x - source.x) + (dest.y - source.y));
@@ -35,7 +36,6 @@ public class RookWhite implements Figure {
         }
         return steps;
     }
-
     @Override
     public Figure copy(Cell dest) {
         return new RookWhite(dest);

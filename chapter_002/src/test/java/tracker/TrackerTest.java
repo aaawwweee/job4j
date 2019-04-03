@@ -35,8 +35,11 @@ public class TrackerTest {
         tracker.add(item1);
         tracker.add(item2);
         tracker.add(item3);
-        Item[] expected = {item1, item2};
-        assertThat(tracker.findByName("testname1"), is(expected));
+        List<Item> expected = new ArrayList<>();
+        expected.add(item1);
+        expected.add(item2);
+        List<Item> result = tracker.findByName(item1.getName());
+        assertThat(result, is(expected));
     }
     @Test
     public void whenDeleteItem() {
@@ -67,8 +70,11 @@ public class TrackerTest {
         tracker.add(item1);
         tracker.add(item2);
         tracker.add(item3);
-        Item[] result = tracker.findAll();
-        Item[] exp = {item1, item2, item3};
+        List<Item> exp = new ArrayList<>();
+        exp.add(item1);
+        exp.add(item2);
+        exp.add(item3);
+        List<Item> result = tracker.findAll();
         assertThat(result, is(exp));
     }
 }

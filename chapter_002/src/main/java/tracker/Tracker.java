@@ -9,7 +9,7 @@ import java.util.*;
  */
 
 public class Tracker {
-    private final ArrayList<Item> items = new ArrayList<>();
+    private final List<Item> items = new ArrayList<>();
     private int position = 0;
     private static final Random RN = new Random();
 
@@ -69,27 +69,22 @@ public class Tracker {
     /**
      * @return all items
      */
-    public Item[] findAll() {
-        Item[] result = new Item[items.size()];
-        for (int i = 0; i < items.size(); i++) {
-            result[i] = items.get(i);
-        }
-        return result;
+    public List <Item> findAll() {
+        return items;
     }
 
     /**
      * @param key - key
      * @return copy of array with needed items
      */
-    public Item[] findByName(String key) {
-        Item[] result = new Item[position];
-        int count = 0;
-        for (int i = 0; i < items.size(); i++) {
-            if (this.items.get(i).getName() != null && this.items.get(i).getName().equals(key)) {
-                result[count++] = this.items.get(i);
+    public List<Item> findByName(String key) {
+        List<Item> list = new ArrayList<>();
+        for (Item item : items) {
+            if (item.getName() != null && item.getName().equals(key)) {
+                list.add(item);
             }
         }
-        return Arrays.copyOf(result, count);
+        return list;
     }
 
     /**

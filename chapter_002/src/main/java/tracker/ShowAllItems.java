@@ -1,4 +1,7 @@
 package tracker;
+
+import java.util.List;
+
 /**
  * @author Alexander Kashkin (kashkinmsk@gmail.com)
  * @since 19.03.2019
@@ -13,7 +16,7 @@ public class ShowAllItems extends BaseAction {
     @Override
     public void execute(Input input, Tracker tracker) {
         System.out.println("---------- Show all Items ----------");
-        Item[] items = tracker.findAll();
+        List<Item> items = tracker.findAll();
         for (Item item : items) {
             System.out.println("Item's ID: " + item.getId() + nextLine + "Item's Name: " + item.getName()
                     + nextLine + "Item's description: " + item.getDesc());

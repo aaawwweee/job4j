@@ -1,4 +1,7 @@
 package tracker;
+
+import java.util.List;
+
 /**
  * @author Alexander Kashkin (kashkinmsk@gmail.com)
  * @since 19.03.2019
@@ -15,7 +18,7 @@ public class FindItemByName extends BaseAction {
     public void execute(Input input, Tracker tracker) {
         System.out.println("---------- Find Item by Name ----------");
         String name = input.ask("Please, enter the Item's Name: ");
-        Item[] items = tracker.findByName(name);
+        List<Item> items = tracker.findByName(name);
         for (Item item : items) {
             System.out.println("Item's ID: " + item.getId() + nextLine + "Item's Name: " + item.getName()
                     + nextLine + "Item's description: " + item.getDesc());

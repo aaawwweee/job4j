@@ -9,7 +9,7 @@ import java.util.*;
  */
 
 public class Tracker {
-    private final Item[] items = new Item[100];
+    private final ArrayList<Item> items = new ArrayList<>();
     private int position = 0;
     private static final Random RN = new Random();
 
@@ -27,7 +27,8 @@ public class Tracker {
      */
     public Item add(Item item) {
         item.setId(this.generateId());
-        this.items[this.position++] = item;
+        this.items.add(this.position, item);
+        position++;
         return item;
     }
 
@@ -38,10 +39,10 @@ public class Tracker {
      */
     public boolean replace(String id, Item item) {
         boolean result = false;
-        for (int i = 0; i != this.position; i++) {
-            if (this.items[i].getId().equals(id)) {
+        for (int i = 0; i < items.size(); i++) {
+            if (this.items.get(i).getId().equals(id)) {
                 item.setId(id);
-                this.items[i] = item;
+                items.set(i, item);
                 result = true;
                 break;
             }
@@ -55,9 +56,9 @@ public class Tracker {
      */
     public boolean delete(String id) {
         boolean result = false;
-        for (int i = 0; i != this.position; i++) {
-            if (this.items[i].getId() != null && this.items[i].getId().equals(id)) {
-                System.arraycopy(items, i + 1, items, i, items.length - i - 1);
+        for (int i = 0; i < items.size(); i++) {
+            if (this.items.get(i).getId() != null && this.items.get(i).getId().equals(id)) {
+                items.remove(i);
                 result = true;
                 break;
             }
@@ -69,7 +70,11 @@ public class Tracker {
      * @return all items
      */
     public Item[] findAll() {
-        return Arrays.copyOf(items, position);
+        Item[] result = new Item[items.size()];
+        for (int i = 0; i < items.size(); i++) {
+            result[i] = items.get(i);
+        }
+        return result;
     }
 
     /**
@@ -79,9 +84,9 @@ public class Tracker {
     public Item[] findByName(String key) {
         Item[] result = new Item[position];
         int count = 0;
-        for (int i = 0; i != this.position; i++) {
-            if (this.items[i].getName() != null && this.items[i].getName().equals(key)) {
-                result[count++] = this.items[i];
+        for (int i = 0; i < items.size(); i++) {
+            if (this.items.get(i).getName() != null && this.items.get(i).getName().equals(key)) {
+                result[count++] = this.items.get(i);
             }
         }
         return Arrays.copyOf(result, count);
@@ -94,8 +99,8 @@ public class Tracker {
     public Item findById(String id) {
         Item result = null;
         for (int index = 0; index != position; index++) {
-            if (items[index] != null && items[index].getId().equals(id)) {
-                result = items[index];
+            if (items.get(index) != null && items.get(index).getId().equals(id)) {
+                result = items.get(index);
                 break;
             }
         }

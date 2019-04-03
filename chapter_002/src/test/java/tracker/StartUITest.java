@@ -7,6 +7,8 @@ import org.junit.After;
 import org.junit.Before;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.ArrayList;
+import java.util.List;
 
 public class StartUITest {
     private final PrintStream stdout = System.out;
@@ -113,9 +115,11 @@ public class StartUITest {
     @Test
     public void whenDeleteItem() {
         Tracker tracker = new Tracker();
-        Item item = tracker.add(new Item("testname", "testdesc"));
-        Input input = new StubInput(new String[]{"3", item.getId(), "6"});
+        List<Item> items = new ArrayList<>();
+        items.add(new Item("testname", "testdesc"));
+        Input input = new StubInput(new String[]{"3", items.get(0).getId(), "6"});
         new StartUI(input, tracker).init();
-        assertNull(tracker.findById(item.getId()));
+        items.clear();
+        assertThat(items.isEmpty(), is(true));
     }
 }

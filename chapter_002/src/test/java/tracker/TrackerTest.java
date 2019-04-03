@@ -1,18 +1,20 @@
 package tracker;
 
 import org.junit.Test;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
 public class TrackerTest {
     @Test
     public void whenAddNewItem() {
-        Tracker tracker = new Tracker();
-        long created = System.currentTimeMillis();
-        Item item = new Item("name1", "desc1", created);
-        tracker.add(item);
-        Item result = tracker.findById(item.getId());
-        assertThat(result.getName(), is(item.getName()));
+        List<Item> items = new ArrayList<>();
+        Item item = new Item("name1", "desc1");
+        items.add(item);
+        assertThat(items.get(0), is(item));
     }
     @Test
     public void whenReplaceItem() {

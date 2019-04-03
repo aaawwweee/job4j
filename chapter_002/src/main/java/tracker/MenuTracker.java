@@ -15,7 +15,6 @@ public class MenuTracker {
         this.input = input;
         this.tracker = tracker;
     }
-    public MenuTracker(){}
 
     public int getActionsLength() {
         return this.actions.size();

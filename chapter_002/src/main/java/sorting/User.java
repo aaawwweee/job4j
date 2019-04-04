@@ -11,7 +11,7 @@ public class User implements Comparable<User> {
         this.name = name;
         this.age = age;
     }
-    public int getAge() {
+    public Integer getAge() {
         return age;
     }
     public String getName() {

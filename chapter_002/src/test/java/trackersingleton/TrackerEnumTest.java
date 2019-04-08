@@ -1,4 +1,4 @@
-package TrackerSingleton;
+package trackersingleton;
 import org.junit.Test;
 
 import static org.junit.Assert.assertThat;

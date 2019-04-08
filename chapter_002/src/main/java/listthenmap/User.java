@@ -1,4 +1,4 @@
-package ListThenMap;
+package listthenmap;
 /**
  * @author Alexander Kashkin
  * @since 03.04.2019

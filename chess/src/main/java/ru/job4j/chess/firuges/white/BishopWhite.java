@@ -12,7 +12,7 @@ import ru.job4j.chess.firuges.Bishop;
 public class BishopWhite extends Bishop {
     private final Cell position;
 
-    public BishopWhite (final Cell position) {
+    public BishopWhite(final Cell position) {
         this.position = position;
     }
 

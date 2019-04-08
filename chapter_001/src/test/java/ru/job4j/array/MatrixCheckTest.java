@@ -12,7 +12,7 @@ public class MatrixCheckTest {
                 {true, false}
         };
         boolean rst = matrix.mono(input);
-        assertThat(rst,is(true));
+        assertThat(rst, is(true));
     }
     @Test
     public void when2x2thenFalse() {
@@ -22,7 +22,7 @@ public class MatrixCheckTest {
                 {false, false}
         };
         boolean rst = matrix.mono(input);
-        assertThat(rst,is(false));
+        assertThat(rst, is(false));
     }
     @Test
     public void when3x3thenTrue() {
@@ -33,7 +33,7 @@ public class MatrixCheckTest {
                 {false, true, false}
         };
         boolean rst = matrix.mono(input);
-        assertThat(rst,is(true));
+        assertThat(rst, is(true));
     }
     @Test
     public void when3x3thenFalse() {
@@ -44,6 +44,6 @@ public class MatrixCheckTest {
                 {true, false, true}
         };
         boolean rst = matrix.mono(input);
-        assertThat(rst,is(false));
+        assertThat(rst, is(false));
     }
 }

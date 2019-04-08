@@ -69,7 +69,7 @@ public class Tracker {
     /**
      * @return all items
      */
-    public List <Item> findAll() {
+    public List<Item> findAll() {
         return items;
     }
 

@@ -9,7 +9,7 @@ public class FitTest {
     public void manWeight() {
         Fit fit = new Fit();
         double weight = fit.manWeight(190);
-        assertThat(weight, closeTo(103.5,0.5));
+        assertThat(weight, closeTo(103.5, 0.5));
     }
     @Test
     public void womanWeight() {

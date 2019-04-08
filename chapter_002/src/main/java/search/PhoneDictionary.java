@@ -22,7 +22,7 @@ public class PhoneDictionary {
             String address = person.getAddress();
             String phone = person.getPhone();
             if (key.contains(name) || key.contains(surname)
-            || key.contains(address) || key.contains(phone)){
+            || key.contains(address) || key.contains(phone)) {
                 result.add(person);
             }
         }

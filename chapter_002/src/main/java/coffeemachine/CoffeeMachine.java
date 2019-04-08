@@ -1,4 +1,4 @@
-package CoffeeMachine;
+package coffeemachine;
 import java.util.Arrays;
 /**
  * @author Alexander Kashkin (kashkinmsk@gmail.com)
@@ -6,12 +6,12 @@ import java.util.Arrays;
  * @version 1
  */
 public class CoffeeMachine {
-    private final int[] NOMINAL = {10, 5, 2, 1};
+    private final static int[] NOMINAL = {10, 5, 2, 1};
     int[] changes(int value, int price) {
         int change = value - price;
         int[] result = new int[change];
         int counter = 0;
-        for (int i= 0; i < NOMINAL.length;) {
+        for (int i = 0; i < NOMINAL.length;) {
             if (change / NOMINAL[i] >= 1) {
                 for (int x = 0; x < change / NOMINAL[i]; x++) {
                     if (change - NOMINAL[i] >= 0) {

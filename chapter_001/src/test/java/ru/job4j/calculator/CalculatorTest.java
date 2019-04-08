@@ -9,14 +9,14 @@ public class CalculatorTest {
         Calculator c = new Calculator();
         double rst = c.add(22D, 5D);
         double exp = 27D;
-        assertThat(rst,is(exp));
+        assertThat(rst, is(exp));
     }
     @Test
     public void whenOneMinusOneThenZero() {
         Calculator c = new Calculator();
         double rst = c.subtract(1D, 1D);
         double exp = 0D;
-        assertThat(rst,is(exp));
+        assertThat(rst, is(exp));
     }
     @Test
     public void whenSixDivSixThenOne() {

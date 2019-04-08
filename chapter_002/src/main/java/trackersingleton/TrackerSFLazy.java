@@ -1,9 +1,9 @@
-package TrackerSingleton;
+package trackersingleton;
 
 public class TrackerSFLazy {
     private static TrackerSFLazy instance;
 
-    private TrackerSFLazy() {}
+    private TrackerSFLazy() { }
 
     public static TrackerSFLazy getInstance() {
         if (instance == null) {

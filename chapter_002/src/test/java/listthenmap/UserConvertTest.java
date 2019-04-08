@@ -1,4 +1,4 @@
-package ListThenMap;
+package listthenmap;
 
 import org.junit.Test;
 import java.util.ArrayList;

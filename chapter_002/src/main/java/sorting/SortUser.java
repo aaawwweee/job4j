@@ -10,12 +10,12 @@ import java.util.*;
 public class SortUser {
     public Set<User> sort(List<User> list) {
         Set<User> set = new TreeSet<>();
-        for(User value : list) {
+        for (User value : list) {
             set.add(value);
         }
         return set;
     }
-    public List<User> sortNameLength (List<User> list) {
+    public List<User> sortNameLength(List<User> list) {
         Collections.sort(list, new Comparator<User>() {
             @Override
             public int compare(User o1, User o2) {
@@ -24,7 +24,7 @@ public class SortUser {
         });
         return list;
     }
-    public List<User> sortByAllFields (List<User> list) {
+    public List<User> sortByAllFields(List<User> list) {
         Collections.sort(list, new Comparator<User>() {
             @Override
             public int compare(User o1, User o2) {

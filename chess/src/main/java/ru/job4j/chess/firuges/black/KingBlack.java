@@ -28,7 +28,7 @@ public class KingBlack implements Figure {
         || source.y == dest.y && source.x == dest.x + 1
         || source.y == dest.y && source.x == dest.x - 1
         || source.y == dest.y - 1 && source.x == dest.x) {
-            steps = new Cell[] { dest };
+            steps = new Cell[]{dest};
         } else {
             throw new ImpossibleMoveException("Wrong way");
         }

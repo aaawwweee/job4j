@@ -1,4 +1,4 @@
-package TrackerSingleton;
+package trackersingleton;
 
 public class TrackerPSFLazy {
     private TrackerPSFLazy() {

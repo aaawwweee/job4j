@@ -13,11 +13,12 @@ public class Bank {
             this.bank.remove(user);
         }
     }
-    public void addAccountToUser(String passport, Account account) {
+    public List<Account> addAccountToUser(String passport, Account account) {
         List<Account> accounts = bank.get(findUserByPassport(passport));
         if (!accounts.contains(account)) {
             accounts.add(account);
         }
+        return accounts;
     }
     public void deleteAccountToUser(String passport, Account account) {
         List<Account> accounts = bank.get(findUserByPassport(passport));

@@ -1,5 +1,9 @@
 package bank;
-
+/**
+ * @author Alexander Kashkin (kashkinmsk@gmail.com)
+ * @since 10.04.2019
+ * @version 1
+ */
 public class Account {
     private double value;
     private int requisites;

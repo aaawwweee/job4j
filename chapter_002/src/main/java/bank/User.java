@@ -1,7 +1,10 @@
 package bank;
-
 import java.util.Objects;
-
+/**
+ * @author Alexander Kashkin (kashkinmsk@gmail.com)
+ * @since 10.04.2019
+ * @version 1
+ */
 public class User {
     private String name;
     private String passport;

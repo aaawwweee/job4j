@@ -34,9 +34,11 @@ public class Bank {
         User result = null;
         Set<User> users = bank.keySet();
         for (User user : users) {
-            if (passport == user.getPassport()) {
-                result = user;
-                break;
+            if (user != null) {
+                if (passport == user.getPassport()) {
+                    result = user;
+                    break;
+                }
             }
         }
         return result;

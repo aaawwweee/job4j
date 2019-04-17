@@ -1,6 +1,7 @@
 package tracker;
 
 import java.util.List;
+import java.util.function.Consumer;
 
 /**
  * @author Alexander Kashkin (kashkinmsk@gmail.com)
@@ -15,12 +16,12 @@ public class FindItemByName extends BaseAction {
     }
 
     @Override
-    public void execute(Input input, Tracker tracker) {
-        System.out.println("---------- Find Item by Name ----------");
+    public void execute(Input input, Tracker tracker, Consumer<String> output) {
+        output.accept("---------- Find Item by Name ----------");
         String name = input.ask("Please, enter the Item's Name: ");
         List<Item> items = tracker.findByName(name);
         for (Item item : items) {
-            System.out.println("Item's ID: " + item.getId() + nextLine + "Item's Name: " + item.getName()
+            output.accept("Item's ID: " + item.getId() + nextLine + "Item's Name: " + item.getName()
                     + nextLine + "Item's description: " + item.getDesc());
         }
     }

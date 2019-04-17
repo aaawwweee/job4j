@@ -1,4 +1,7 @@
 package tracker;
+
+import java.util.function.Consumer;
+
 /**
  * @author Alexander Kashkin (kashkinmsk@gmail.com)
  * @since 19.03.2019
@@ -11,14 +14,14 @@ public class DeleteItem extends BaseAction {
     }
 
     @Override
-    public void execute(Input input, Tracker tracker) {
-        System.out.println("---------- Delete the Item ----------");
+    public void execute(Input input, Tracker tracker, Consumer<String> output) {
+        output.accept("---------- Delete the Item ----------");
         String id = input.ask("Please, enter the Item's ID: ");
         boolean x = tracker.delete(id);
         if (x) {
-            System.out.println("The Item has been deleted");
+            output.accept("The Item has been deleted");
         } else {
-            System.out.println("The Item hasn't been deleted");
+            output.accept("The Item hasn't been deleted");
         }
     }
 }

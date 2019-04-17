@@ -1,5 +1,7 @@
 package tracker;
 
+import java.util.function.Consumer;
+
 public class ExitTracker extends BaseAction {
 
     private final StartUI ui;
@@ -10,8 +12,8 @@ public class ExitTracker extends BaseAction {
     }
 
     @Override
-    public void execute(Input input, Tracker tracker) {
-        System.out.println("Have a nice day. Goodbye.");
+    public void execute(Input input, Tracker tracker, Consumer<String> output) {
+        output.accept("Have a nice day. Goodbye.");
         this.ui.stop();
     }
 }

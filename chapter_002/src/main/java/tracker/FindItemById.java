@@ -1,4 +1,7 @@
 package tracker;
+
+import java.util.function.Consumer;
+
 /**
  * @author Alexander Kashkin (kashkinmsk@gmail.com)
  * @since 19.03.2019
@@ -12,15 +15,15 @@ public class FindItemById extends BaseAction {
     }
 
     @Override
-    public void execute(Input input, Tracker tracker) {
-        System.out.println("---------- Find Item by ID ----------");
+    public void execute(Input input, Tracker tracker, Consumer<String> output) {
+        output.accept("---------- Find Item by ID ----------");
         String id = input.ask("Please, enter the Item's ID: ");
         Item item = tracker.findById(id);
         if (item != null) {
-            System.out.println("Item's ID: " + item.getId() + nextLine + "Item's Name: " + item.getName()
+            output.accept("Item's ID: " + item.getId() + nextLine + "Item's Name: " + item.getName()
                     + nextLine + "Item's description: " + item.getDesc());
         } else {
-            System.out.println("Item not found.");
+            output.accept("Item not found.");
         }
     }
 }

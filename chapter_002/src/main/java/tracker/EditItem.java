@@ -1,4 +1,7 @@
 package tracker;
+
+import java.util.function.Consumer;
+
 /**
  * @author Alexander Kashkin (kashkinmsk@gmail.com)
  * @since 19.03.2019
@@ -11,17 +14,17 @@ public class EditItem extends BaseAction {
     }
 
     @Override
-    public void execute(Input input, Tracker tracker) {
-        System.out.println("---------- Edit the Item ----------");
+    public void execute(Input input, Tracker tracker, Consumer<String> output) {
+        output.accept("---------- Edit the Item ----------");
         String id = input.ask("Please, enter the Item's ID: ");
         String name = input.ask("Enter the Item's Name: ");
         String desc = input.ask("Enter the Item's description: ");
         Item item = new Item(name, desc);
         boolean x = tracker.replace(id, item);
         if (x) {
-            System.out.println("The Item has been edited");
+            output.accept("The Item has been edited");
         } else {
-            System.out.println("The Item hasn't been edited");
+            output.accept("The Item hasn't been edited");
         }
     }
 }

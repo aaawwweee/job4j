@@ -1,6 +1,8 @@
 package tracker;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Consumer;
+
 /**
  * @author Alexander Kashkin (kashkinmsk@gmail.com)
  * @since 19.03.2019
@@ -10,10 +12,12 @@ public class MenuTracker {
     private Input input;
     private Tracker tracker;
     private List<UserAction> actions = new ArrayList<>();
+    private final Consumer<String> output;
 
-    public MenuTracker(Input input, Tracker tracker) {
+    public MenuTracker(Input input, Tracker tracker, Consumer<String> output) {
         this.input = input;
         this.tracker = tracker;
+        this.output = output;
     }
 
     public int getActionsLength() {
@@ -29,12 +33,12 @@ public class MenuTracker {
         this.actions.add(new ExitTracker(6, "Exit.", ui));
     }
     public void select(int key) {
-        this.actions.get(key).execute(this.input, this.tracker);
+        this.actions.get(key).execute(this.input, this.tracker, this.output);
     }
     public void show() {
         for (UserAction action : this.actions) {
             if (action != null) {
-                System.out.println(action.info());
+                output.accept(action.info());
             }
         }
     }

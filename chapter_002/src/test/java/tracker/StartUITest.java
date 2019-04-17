@@ -9,10 +9,13 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Consumer;
 
 public class StartUITest {
-    private final PrintStream stdout = System.out;
+
     private final ByteArrayOutputStream out = new ByteArrayOutputStream();
+    private final PrintStream stdout = new PrintStream(out);
+    private final Consumer<String> output = stdout::println;
     private String nLine = System.lineSeparator();
     private String menu = new StringBuilder()
             .append("0. Add Item.").append(nLine)
@@ -39,7 +42,7 @@ public class StartUITest {
         Tracker tracker = new Tracker();
         Item item = tracker.add(new Item("testname", "testdesc"));
         Input input = new StubInput(new String[]{"1", "6"});
-        new StartUI(input, tracker).init();
+        new StartUI(input, tracker, output).init();
         assertThat(new String(out.toByteArray()),
                 is(
                         new StringBuilder()
@@ -57,7 +60,7 @@ public class StartUITest {
         Tracker tracker = new Tracker();
         Item item = tracker.add(new Item("testname", "testdesc"));
         Input input = new StubInput(new String[]{"5", item.getName(), "6"});
-        new StartUI(input, tracker).init();
+        new StartUI(input, tracker, output).init();
         assertThat(new String(out.toByteArray()),
                 is(
                         new StringBuilder()
@@ -75,7 +78,7 @@ public class StartUITest {
         Tracker tracker = new Tracker();
         Item item = tracker.add(new Item("testname", "testdesc"));
         Input input = new StubInput(new String[]{"4", item.getId(), "6"});
-        new StartUI(input, tracker).init();
+        new StartUI(input, tracker, output).init();
         assertThat(new String(out.toByteArray()),
                 is(
                         new StringBuilder()
@@ -94,14 +97,14 @@ public class StartUITest {
         Tracker tracker = new Tracker();
         String id = "2019";
         Input input = new StubInput(new String[]{"4", id, "6"});
-        new StartUI(input, tracker).init();
+        new StartUI(input, tracker, output).init();
         assertNull(tracker.findById(id));
     }
     @Test
     public void whenAddItem() {
         Tracker tracker = new Tracker();
         Input input = new StubInput(new String[]{"0", "test name", "desc", "6"});
-        new StartUI(input, tracker).init();
+        new StartUI(input, tracker, output).init();
         assertThat(tracker.findAll().get(0).getName(), is("test name"));
     }
     @Test
@@ -109,7 +112,7 @@ public class StartUITest {
         Tracker tracker = new Tracker();
         Item item = tracker.add(new Item("testname", "testdesc"));
         Input input = new StubInput(new String[]{"2", item.getId(), "test replace", "replacing item", "6"});
-        new StartUI(input, tracker).init();
+        new StartUI(input, tracker, output).init();
         assertThat(tracker.findById(item.getId()).getName(), is("test replace"));
     }
     @Test
@@ -118,7 +121,7 @@ public class StartUITest {
         List<Item> items = new ArrayList<>();
         items.add(new Item("testname", "testdesc"));
         Input input = new StubInput(new String[]{"3", items.get(0).getId(), "6"});
-        new StartUI(input, tracker).init();
+        new StartUI(input, tracker, output).init();
         items.clear();
         assertThat(items.isEmpty(), is(true));
     }

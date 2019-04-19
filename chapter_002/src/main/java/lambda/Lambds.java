@@ -9,7 +9,7 @@ import java.util.function.Function;
  * @version 1
  */
 public class Lambds {
-    public List<Double> diapason (int start, int end, Function<Double, Double> func) {
+    public List<Double> diapason(int start, int end, Function<Double, Double> func) {
         List<Double> lists = new ArrayList<>();
         for (double index = start; index != end; index++) {
             lists.add(func.apply(index));

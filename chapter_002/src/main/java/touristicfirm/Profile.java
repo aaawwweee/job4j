@@ -1,4 +1,7 @@
 package touristicfirm;
+
+import java.util.Objects;
+
 /**
  * @author Alexander Kashkin (kashkinmsk@gmail.com)
  * @version 1
@@ -25,6 +28,24 @@ public class Profile {
             this.street = street;
             this.home = home;
             this.apartment = apartment;
+        }
+        public String getCity() {
+            return city;
+        }
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) {
+                return true;
+            }
+            if (o == null || getClass() != o.getClass()) {
+                return false;
+            }
+            Address address = (Address) o;
+            return Objects.equals(city, address.city);
+        }
+        @Override
+        public int hashCode() {
+            return Objects.hash(city);
         }
     }
 }

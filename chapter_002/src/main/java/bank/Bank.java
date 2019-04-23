@@ -31,17 +31,18 @@ public class Bank {
         return accounts;
     }
     public User findUserByPassport(String passport) {
-        User result = null;
-        Set<User> users = bank.keySet();
-        for (User user : users) {
-            if (user != null) {
-                if (passport == user.getPassport()) {
-                    result = user;
-                    break;
-                }
-            }
-        }
-        return result;
+//        User result = null;
+//        Set<User> users = bank.keySet();
+//        for (User user : users) {
+//            if (user != null) {
+//                if (passport == user.getPassport()) {
+//                    result = user;
+//                    break;
+//                }
+//            }
+//        }
+        Optional<User> user = bank.keySet().stream().filter(x -> x.getPassport().equals(passport)).findAny();
+        return user.orElseGet(() -> user.orElseGet(null));
     }
     public List<Account> getUserAccounts(String passport) {
         return bank.get(findUserByPassport(passport));

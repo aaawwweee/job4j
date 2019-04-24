@@ -8,15 +8,15 @@ import java.util.List;
  * @version 1
  */
 public class PhoneDictionary {
-    private List<Person> persons = new ArrayList<Person>();
+    private List<Person> persons = new ArrayList<>();
 
     public void add(Person person) {
         this.persons.add(person);
     }
 
     public List<Person> find(String key) {
-        List<Person> result = new ArrayList<>();
-        for (Person person : persons) {
+        var result = new ArrayList<Person>();
+        for (var person : persons) {
             String name = person.getName();
             String surname = person.getSurname();
             String address = person.getAddress();

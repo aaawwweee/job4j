@@ -10,35 +10,31 @@ import static org.hamcrest.core.Is.is;
 public class SortUserTest {
     @Test
     public void whenSorted() {
-        List<User> list = new ArrayList<>();
         SortUser sortUser = new SortUser();
-        list.add(new User("Pasha", 67));
-        list.add(new User("Sasha", 27));
-        list.add(new User("Lena", 31));
-        Set<User> result = sortUser.sort(list);
-        assertThat(result.iterator().next().getName(), is("Sasha"));
-        assertThat(result.iterator().hasNext(), is(true));
+        User user1 = new User("Pasha", 67);
+        User user2 = new User("Sasha", 27);
+        User user3 = new User("Lena", 31);
+        Set<User> expected = Set.of(user1, user2, user3);
+        Set<User> result = sortUser.sort(List.of(user1, user2, user3));
+        assertThat(result, is(expected));
     }
     @Test
     public void whenSortedByNamesLength() {
-        List<User> list = new ArrayList<>();
         SortUser sortUser = new SortUser();
-        list.add(new User("Pasha", 17));
-        list.add(new User("Sasha", 27));
-        list.add(new User("Lena", 31));
-        List<User> result = sortUser.sortNameLength(list);
-        assertThat(result.iterator().next().getName(), is("Lena"));
+        User user1 = new User("Pasha", 17);
+        User user2 = new User("Sasha", 27);
+        User user3 = new User("Lena", 31);
+        Set<User> result = sortUser.sort(List.of(user1, user2, user3));
+        assertThat(result.iterator().next().getName(), is("Pasha"));
     }
     @Test
     public void whenFirstSortedByNameThenByAge() {
-        List<User> list = new ArrayList<>();
         SortUser sortUser = new SortUser();
-        list.add(new User("Pasha", 17));
-        list.add(new User("Sasha", 27));
-        list.add(new User("Lena", 31));
-        list.add(new User("Afanasiy", 53));
-        list.add(new User("Bogdan", 5));
-        List<User> result = sortUser.sortByAllFields(list);
-        assertThat(result.iterator().next().getName(), is("Afanasiy"));
+        List<User> users = new ArrayList<>();
+        users.add(new User("Pasha", 17));
+        users.add(new User("Sasha", 27));
+        users.add(new User("Lena", 31));
+        List<User> result = sortUser.sortByAllFields(users);
+        assertThat(result.iterator().next().getName(), is("Lena"));
     }
 }

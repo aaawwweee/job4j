@@ -48,16 +48,8 @@ public class Bank {
         return bank.get(findUserByPassport(passport));
     }
     public Account findUsersAccount(String passport, int requisites) {
-        Account result = null;
-        User user = findUserByPassport(passport);
-        if (user != null) {
-            for (Account account : bank.get(user)) {
-                if (requisites == account.getRequisites()) {
-                    result = account;
-                }
-            }
-        }
-        return result;
+        final List<Account> list = getUserAccounts(passport);
+        return list.stream().filter(account -> account.getRequisites() == requisites).findFirst().orElse(null);
     }
     public boolean transfer(String srcPassport, int srcRequisite, String destPassport, int dstRequisite, double amount) {
         boolean result = false;

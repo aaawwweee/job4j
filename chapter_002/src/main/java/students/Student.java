@@ -14,7 +14,8 @@ public class Student implements Comparator<Student> {
     private String name;
     private int scope;
 
-    public Student() {}
+    public Student() {
+    }
 
     public Student(String name, int scope) {
         this.name = name;

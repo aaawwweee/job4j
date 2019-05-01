@@ -1,3 +1,4 @@
+
 package sorting;
 
 import java.util.*;
@@ -10,9 +11,7 @@ import java.util.*;
 public class SortUser {
     public Set<User> sort(List<User> list) {
         Set<User> set = new TreeSet<>();
-        for (User value : list) {
-            set.add(value);
-        }
+        set.addAll(list);
         return set;
     }
     public List<User> sortNameLength(List<User> list) {

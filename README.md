@@ -2,4 +2,5 @@
 [![codecov](https://codecov.io/gh/aaawwweee/job4j/branch/master/graph/badge.svg)](https://codecov.io/gh/aaawwweee/job4j)
 # kashkinmsk@gmail.com
 http://job4j.ru/
+Объединение зафиксированных измененЕй
 Цель - достичь уровня Junior и устроиться на работу к лету 2019 года. 

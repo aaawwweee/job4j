@@ -8,49 +8,71 @@ import java.util.Comparator;
  * @version 1
 **/
 public class Departments {
-    public String[] sortAscending(String[] codes) {
-        Set<String> result = new TreeSet<String>(new Comparator<String>() {
-            @Override
-            public int compare(String o1, String o2) {
-                return o1.compareTo(o2);
-            }
-        });
-        for (String code : codes) {
-            String[] departmentsNames = code.split("\\\\");
-            StringBuilder department = new StringBuilder();
-            for (String departmentsName : departmentsNames) {
-                department.append(departmentsName);
-                result.add(department.toString());
-                department.append("\\");
-            }
+    public static final class Org implements Comparable<Org> {
+        private final List<String> deps;
+
+        public Org(List<String> deps) {
+            this.deps = deps;
         }
-        return result.toArray(new String[0]);
+
+        @Override
+        public int compareTo(Org o) {
+            int len = Integer.min(this.deps.size(), o.deps.size());
+            int rst = 0;
+            for (int i = 0; i < len; i++) {
+                rst = this.deps.get(i).compareTo(o.deps.get(i));
+                if (rst != 0) {
+                    break;
+                }
+            }
+            return rst;
+        }
+
+        @Override
+        public String toString() {
+            return deps.toString();
+        }
+
+        @Override
+        public boolean equals(Object obj) {
+            if (obj == this) {
+                return true;
+            }
+            if (obj == null && getClass() != obj.getClass()) {
+                return false;
+            }
+            Org org = (Org) obj;
+            return Objects.equals(deps, org.deps);
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(deps);
+        }
     }
 
-    public String[] sortDescending(String[] codes) {
-        Set<String> result = new TreeSet<String>(new Comparator<String>() {
-            @Override
-            public int compare(String o1, String o2) {
-                int l = Math.min(o1.length(), o2.length());
-                int x = 0;
-                while (x < l) {
-                    if (o2.toCharArray()[x] != o1.toCharArray()[x]) {
-                        return o2.toCharArray()[x] - o1.toCharArray()[x];
-                    }
-                    x++;
-                }
-                return o1.length() - o2.length();
-            }
-        });
-        for (String code : codes) {
-            String[] departmentNames = code.split("\\\\");
-            StringBuilder department = new StringBuilder();
-            for (String departmentName : departmentNames) {
-                department.append(departmentName);
-                result.add(department.toString());
-                department.append("\\");
+    public List<Org> convert(List<String> deps) {
+        List<Org> rstDeps = new ArrayList<>();
+        Set<Org> setSort = new LinkedHashSet<>();
+        for (String string : deps) {
+            String[] arrayDep = string.split("/");
+            List<String> listDeps = new ArrayList<>();
+            for (String dep : arrayDep) {
+                listDeps.add(dep);
+                setSort.add(new Org(new ArrayList<>(listDeps)));
             }
         }
-        return result.toArray(new String[0]);
+        rstDeps.addAll(setSort);
+        return rstDeps;
+    }
+
+    public List<Org> sortAsc(List<Org> orgs) {
+        Collections.sort(orgs);
+        return orgs;
+    }
+
+    public List<Org> sortDesc(List<Org> orgs) {
+        Collections.sort(orgs, Collections.reverseOrder());
+        return orgs;
     }
 }

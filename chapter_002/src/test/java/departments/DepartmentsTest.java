@@ -8,55 +8,97 @@ import static org.junit.Assert.assertThat;
 
 public class DepartmentsTest {
     @Test
-    public void whenDepsSortAscending() {
-        String[] codes = new String[]{
-                "K1\\SK1",
-                "K1\\SK2",
-                "K1\\SK2",
-                "K1\\SK1\\SSK1",
-                "K1\\SK1\\SSK2",
-                "K2",
-                "K2\\SK1\\SSK1",
-                "K2\\SK1\\SSK2"
-        };
-        String[] expected = new String[] {
-                "K1",
-                "K1\\SK1",
-                "K1\\SK1\\SSK1",
-                "K1\\SK1\\SSK2",
-                "K1\\SK2",
-                "K2",
-                "K2\\SK1",
-                "K2\\SK1\\SSK1",
-                "K2\\SK1\\SSK2"
-        };
-        Departments department = new Departments();
-        assertThat(department.sortAscending(codes), is(expected));
+    public void whenMissed() {
+        Departments deps = new Departments();
+        List<String> input = Arrays.asList("k1/sk1");
+        List<Departments.Org> expect = Arrays.asList(
+                new Departments.Org(Arrays.asList("k1")),
+                new Departments.Org(Arrays.asList("k1", "sk1"))
+        );
+        List<Departments.Org> result = deps.convert(input);
+        assertThat(result, is(expect));
     }
+
     @Test
-    public void whenDepsSortDescending() {
-        String[] codes = new String[]{
-                "K1\\SK1",
-                "K1\\SK2",
-                "K1\\SK2",
-                "K1\\SK1\\SSK1",
-                "K1\\SK1\\SSK2",
-                "K2",
-                "K2\\SK1\\SSK1",
-                "K2\\SK1\\SSK2"
-        };
-        String[] expected = new String[] {
-                "K2",
-                "K2\\SK1",
-                "K2\\SK1\\SSK2",
-                "K2\\SK1\\SSK1",
-                "K1",
-                "K1\\SK2",
-                "K1\\SK1",
-                "K1\\SK1\\SSK2",
-                "K1\\SK1\\SSK1"
-        };
-        Departments department = new Departments();
-        assertThat(department.sortDescending(codes), is(expected));
+    public void whenMissed1() {
+        Departments deps = new Departments();
+        List<String> input = Arrays.asList("K1/SK1", "K1/SK2", "K1/SK1/SSK1", "K1/SK1/SSK2", "K2", "K2/SK1/SSK1", "K2/SK1/SSK2");
+        List<Departments.Org> expect = Arrays.asList(
+                new Departments.Org(Arrays.asList("K1")),
+                new Departments.Org(Arrays.asList("K1", "SK1")),
+                new Departments.Org(Arrays.asList("K1", "SK2")),
+                new Departments.Org(Arrays.asList("K1", "SK1", "SSK1")),
+                new Departments.Org(Arrays.asList("K1", "SK1", "SSK2")),
+                new Departments.Org(Arrays.asList("K2")),
+                new Departments.Org(Arrays.asList("K2", "SK1")),
+                new Departments.Org(Arrays.asList("K2", "SK1", "SSK1")),
+                new Departments.Org(Arrays.asList("K2", "SK1", "SSK2"))
+        );
+        List<Departments.Org> result = deps.convert(input);
+        assertThat(result, is(expect));
+    }
+
+    @Test
+    public void whenAsc() {
+        Departments deps = new Departments();
+        List<String> input = Arrays.asList("k1/sk1", "k2");
+        List<Departments.Org> expect = Arrays.asList(
+                new Departments.Org(Arrays.asList("k1")),
+                new Departments.Org(Arrays.asList("k1", "sk1")),
+                new Departments.Org(Arrays.asList("k2"))
+        );
+        List<Departments.Org> result = deps.sortAsc(deps.convert(input));
+        assertThat(result, is(expect));
+    }
+
+    @Test
+    public void whenAsc2() {
+        Departments deps = new Departments();
+        List<String> input = Arrays.asList("K1/SK1", "K1/SK2", "K1/SK1/SSK1", "K1/SK1/SSK2", "K2", "K2/SK1/SSK1", "K2/SK1/SSK2");
+        List<Departments.Org> expect = Arrays.asList(
+                new Departments.Org(Arrays.asList("K1")),
+                new Departments.Org(Arrays.asList("K1", "SK1")),
+                new Departments.Org(Arrays.asList("K1", "SK1", "SSK1")),
+                new Departments.Org(Arrays.asList("K1", "SK1", "SSK2")),
+                new Departments.Org(Arrays.asList("K1", "SK2")),
+                new Departments.Org(Arrays.asList("K2")),
+                new Departments.Org(Arrays.asList("K2", "SK1")),
+                new Departments.Org(Arrays.asList("K2", "SK1", "SSK1")),
+                new Departments.Org(Arrays.asList("K2", "SK1", "SSK2"))
+        );
+        List<Departments.Org> result = deps.sortAsc(deps.convert(input));
+        assertThat(result, is(expect));
+    }
+
+    @Test
+    public void whenDesc() {
+        Departments deps = new Departments();
+        List<String> input = Arrays.asList("k1/sk1", "k2");
+        List<Departments.Org> expect = Arrays.asList(
+                new Departments.Org(Arrays.asList("k2")),
+                new Departments.Org(Arrays.asList("k1")),
+                new Departments.Org(Arrays.asList("k1", "sk1"))
+        );
+        List<Departments.Org> result = deps.sortDesc(deps.convert(input));
+        assertThat(result, is(expect));
+    }
+
+    @Test
+    public void whenDesc1() {
+        Departments deps = new Departments();
+        List<String> input = Arrays.asList("K1/SK1", "K1/SK2", "K1/SK1/SSK1", "K1/SK1/SSK2", "K2", "K2/SK1/SSK1", "K2/SK1/SSK2");
+        List<Departments.Org> expect = Arrays.asList(
+                new Departments.Org(Arrays.asList("K2")),
+                new Departments.Org(Arrays.asList("K2", "SK1")),
+                new Departments.Org(Arrays.asList("K2", "SK1", "SSK2")),
+                new Departments.Org(Arrays.asList("K2", "SK1", "SSK1")),
+                new Departments.Org(Arrays.asList("K1")),
+                new Departments.Org(Arrays.asList("K1", "SK2")),
+                new Departments.Org(Arrays.asList("K1", "SK1")),
+                new Departments.Org(Arrays.asList("K1", "SK1", "SSK2")),
+                new Departments.Org(Arrays.asList("K1", "SK1", "SSK1"))
+        );
+        List<Departments.Org> result = deps.sortDesc(deps.convert(input));
+        assertThat(result, is(expect));
     }
 }

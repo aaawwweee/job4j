@@ -1,6 +1,8 @@
 package iterator;
 
 import java.util.Iterator;
+import java.util.NoSuchElementException;
+
 /**
  * @author Alexander Kashkin (kashkinmsk@gmail.com)
  * @since 16.05.2019
@@ -23,6 +25,9 @@ public class JaggedArrayIterator implements Iterator<Integer> {
 
     @Override
     public Integer next() {
+        if (!hasNext()) {
+            throw new NoSuchElementException();
+        }
         if (secondIndex == values[firstIndex].length) {
             return values[++firstIndex][0];
         } else {

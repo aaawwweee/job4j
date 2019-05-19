@@ -19,21 +19,24 @@ public class EvenNumbersIterator implements Iterator<Integer> {
 
     @Override
     public boolean hasNext() {
-        return Arrays
-                .stream(values)
-                .skip(index)
-                .filter(i -> i % 2 == 0)
-                .count() > 0;
+        boolean result = false;
+        for (int i = index; i < values.length; i++) {
+            if  (values[i] % 2 == 0) {
+                result = true;
+            }
+        }
+        return result;
     }
 
     @Override
     public Integer next() {
-        for (int i = index; i < values.length; i++) {
-            if (values[i] % 2 == 0) {
-                index = i + 1;
-                return values[i];
+        if (!hasNext()) {
+            throw new NoSuchElementException();
+        } else {
+            if (values[index] % 2 != 0) {
+                index++;
+            }
+            return values[index++];
             }
         }
-        throw new NoSuchElementException();
-    }
 }

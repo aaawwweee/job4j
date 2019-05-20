@@ -23,6 +23,8 @@ public class EvenNumbersIterator implements Iterator<Integer> {
         for (int i = index; i < values.length; i++) {
             if  (values[i] % 2 == 0) {
                 result = true;
+                index = i;
+                break;
             }
         }
         return result;

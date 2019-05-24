@@ -24,8 +24,10 @@ public class SimpleArrayListTest {
     }
     @Test
     public void whenDeleteFirstElement() {
-        assertThat(list.delete(), is(list.get(0)));
-        assertThat(list.get(0), is(2));
+        var deleted = list.get(0);
+        var nextFirst = list.get(1);
+        assertThat(list.delete(), is(deleted));
+        assertThat(list.get(0), is(nextFirst));
         assertThat(list.getSize(), is(2));
     }
 }

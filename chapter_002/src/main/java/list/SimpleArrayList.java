@@ -19,9 +19,11 @@ public class SimpleArrayList<E> {
         if (size == 0) {
             throw new NoSuchElementException();
         }
-        this.first = first.next;
+        E result = this.first.data;
+        this.first = this.first.next;
+        first.next = null;
         this.size--;
-        return this.first.data;
+        return result;
     }
     public E get(int index) {
         Node<E> result = this.first;

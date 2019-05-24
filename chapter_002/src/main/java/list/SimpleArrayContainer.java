@@ -4,13 +4,14 @@ package list;
  * @since 24.05.2019
  * @version 1
  */
+import java.util.Arrays;
 import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 public class SimpleArrayContainer<E> implements Iterable<E> {
 
-    private static final int CAPACITY = 100;
+    private static final int CAPACITY = 2;
     private Object[] container;
     private int count = 0;
     private int modCount = 0;
@@ -19,13 +20,15 @@ public class SimpleArrayContainer<E> implements Iterable<E> {
         this.container = new Object[CAPACITY];
     }
 
+    public void expansion() {
+        this.container = Arrays.copyOf(this.container, this.container.length + CAPACITY);
+    }
+
     public void add(E value) {
         if (count == container.length) {
-            Object[] xArray = new Object[container.length + CAPACITY];
-            System.arraycopy(container, 0, xArray, 0, container.length);
-            container = xArray;
-            modCount++;
+            expansion();
         }
+        modCount++;
         container[count++] = value;
     }
 

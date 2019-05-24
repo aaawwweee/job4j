@@ -26,8 +26,8 @@ public abstract class AbstractStore<T extends Base> implements Store<T> {
             return false;
         } else {
             storage.set(index, model);
+            return storage.get(index) == model;
         }
-        return storage.get(index) == model;
     }
 
     @Override

@@ -1,4 +1,5 @@
 package list;
+
 import java.util.NoSuchElementException;
 /**
  * @author Alexander Kashkin (kashkinmsk@gmail.com)

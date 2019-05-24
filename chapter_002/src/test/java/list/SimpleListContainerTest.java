@@ -1,0 +1,41 @@
+package list;
+/**
+ * @author Alexander Kashkin (kashkinmskgmail.com)
+ * @since 24.05.2019
+ * @version 1
+ */
+import org.junit.Before;
+import org.junit.Test;
+
+import java.util.Iterator;
+
+import static org.junit.Assert.assertThat;
+import static org.hamcrest.core.Is.is;
+
+public class SimpleListContainerTest {
+    SimpleListContainer<Integer> slc;
+    Iterator it;
+    @Before
+    public void addSomeElements() {
+        slc = new SimpleListContainer<>();
+        slc.add(3);
+        slc.add(5);
+        slc.add(3);
+        it = slc.iterator();
+    }
+    @Test
+    public void getElementsByIndex() {
+        assertThat(slc.get(0), is(3));
+        assertThat(slc.get(1), is(5));
+        assertThat(slc.get(2), is(3));
+    }
+    @Test
+    public void checkByIterator() {
+        assertThat(it.next(), is(3));
+        assertThat(it.hasNext(), is(true));
+        assertThat(it.next(), is(5));
+        assertThat(it.hasNext(), is(true));
+        assertThat(it.next(), is(3));
+        assertThat(it.hasNext(), is(false));
+    }
+}

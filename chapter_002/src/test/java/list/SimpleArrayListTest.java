@@ -22,11 +22,17 @@ public class SimpleArrayListTest {
         assertThat(list.getSize(), is(3));
     }
     @Test
-    public void whenDeleteFirstElement() {
+    public void whenDeleteHeadElement() {
         var deleted = list.get(0);
         var nextFirst = list.get(1);
         assertThat(list.delete(), is(deleted));
         assertThat(list.get(0), is(nextFirst));
         assertThat(list.getSize(), is(2));
+    }
+    @Test
+    public void whenDeleteTailElement() {
+        var deleted = list.get(2);
+        assertThat(list.deleteTail(), is(deleted));
+
     }
 }

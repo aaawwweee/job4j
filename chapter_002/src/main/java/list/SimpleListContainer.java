@@ -6,13 +6,20 @@ import java.util.NoSuchElementException;
 
 public class SimpleListContainer<E> implements Iterable<E> {
     private Node<E> first;
+    private Node<E> last;
     private int size;
     private int modCount = 0;
 
     public void add(E value) {
         Node<E> newLink = new Node<>(value);
-        newLink.next = this.first;
-        this.first = newLink;
+        if (first == null) {
+            first = newLink;
+            last = newLink;
+        } else {
+            last.next = newLink;
+            newLink.previous = last;
+        }
+        last = newLink;
         this.size++;
         modCount++;
     }
@@ -23,12 +30,17 @@ public class SimpleListContainer<E> implements Iterable<E> {
         }
         return result.value;
     }
+    public int getSize() {
+        return this.size;
+    }
     private class Node<E> {
         E value;
         Node<E> next;
+        Node<E> previous;
         public Node(E value) {
             this.value = value;
         }
+
     }
     @Override
     public Iterator<E> iterator() {

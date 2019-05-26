@@ -18,22 +18,26 @@ public class SimpleListContainerTest {
     @Before
     public void addSomeElements() {
         slc = new SimpleListContainer<>();
-        slc.add(3);
-        slc.add(5);
+        slc.add(1);
+        slc.add(2);
         slc.add(3);
         it = slc.iterator();
     }
     @Test
     public void getElementsByIndex() {
-        assertThat(slc.get(0), is(3));
-        assertThat(slc.get(1), is(5));
+        assertThat(slc.get(0), is(1));
+        assertThat(slc.get(1), is(2));
         assertThat(slc.get(2), is(3));
     }
     @Test
+    public void getSize() {
+        assertThat(slc.getSize(), is(3));
+    }
+    @Test
     public void checkByIterator() {
-        assertThat(it.next(), is(3));
+        assertThat(it.next(), is(1));
         assertThat(it.hasNext(), is(true));
-        assertThat(it.next(), is(5));
+        assertThat(it.next(), is(2));
         assertThat(it.hasNext(), is(true));
         assertThat(it.next(), is(3));
         assertThat(it.hasNext(), is(false));

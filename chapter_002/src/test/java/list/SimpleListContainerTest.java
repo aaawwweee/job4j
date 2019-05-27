@@ -30,6 +30,14 @@ public class SimpleListContainerTest {
         assertThat(slc.get(2), is(3));
     }
     @Test
+    public void getLastAndRemoveIt() {
+        assertThat(slc.getLast(), is(3));
+        slc.add(4);
+        assertThat(slc.getLast(), is(4));
+        slc.removeLast();
+        assertThat(slc.getLast(), is(3));
+    }
+    @Test
     public void getSize() {
         assertThat(slc.getSize(), is(3));
     }

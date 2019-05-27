@@ -23,7 +23,7 @@ public class SimpleArrayList<E> {
         tail = newLink;
         this.size++;
     }
-    public E delete(){
+    public E delete() {
         if (size == 0) {
             throw new NoSuchElementException();
         }

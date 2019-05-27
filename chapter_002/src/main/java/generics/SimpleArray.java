@@ -49,7 +49,7 @@ public class SimpleArray<T> implements Iterable<T> {
             public T next() {
                 if (!hasNext()) {
                     throw new NoSuchElementException();
-                };
+                }
                 return (T) objects[index++];
             }
         };

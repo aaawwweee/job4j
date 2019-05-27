@@ -4,6 +4,12 @@ import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
+/**
+ * @author Alexander Kashkin (kashkinmsk@gmail.com)
+ * @since 27.05.2019
+ * @version 1
+ * @param <E> - generic
+ */
 public class SimpleListContainer<E> implements Iterable<E> {
     private Node<E> first;
     private Node<E> last;
@@ -32,6 +38,19 @@ public class SimpleListContainer<E> implements Iterable<E> {
     }
     public int getSize() {
         return this.size;
+    }
+    public void removeLast() {
+        this.last = this.last.previous;
+        if (this.last == null) {
+            this.last = this.first;
+        }
+        this.last.next = null;
+        this.size--;
+        modCount++;
+    }
+    public E getLast() {
+        E value = this.last.value;
+        return value;
     }
     private class Node<E> {
         E value;

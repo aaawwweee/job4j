@@ -40,13 +40,12 @@ public class SimpleListContainer<E> implements Iterable<E> {
         return this.size;
     }
     public void removeLast() {
-        this.last = this.last.previous;
-        if (this.last == null) {
-            this.last = this.first;
+        if (this.last.previous != null) {
+            this.last.previous.next = null;
         }
-        this.last.next = null;
+        this.last = last.previous;
         this.size--;
-        modCount++;
+        this.modCount++;
     }
     public void removeFirst() {
         this.first = this.first.next;

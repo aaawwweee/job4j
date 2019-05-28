@@ -48,6 +48,19 @@ public class SimpleListContainer<E> implements Iterable<E> {
         this.size--;
         modCount++;
     }
+    public void removeFirst() {
+        this.first = this.first.next;
+        if (this.first == null) {
+            this.first = this.last;
+        }
+        this.first.next = null;
+        this.size--;
+        modCount++;
+    }
+    public E getFirst() {
+        E value = this.first.value;
+        return value;
+    }
     public E getLast() {
         E value = this.last.value;
         return value;

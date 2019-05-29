@@ -6,6 +6,7 @@ package list;
  */
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.experimental.theories.suppliers.TestedOn;
 
 import java.util.Iterator;
 
@@ -36,6 +37,12 @@ public class SimpleListContainerTest {
         assertThat(slc.getLast(), is(4));
         slc.removeLast();
         assertThat(slc.getLast(), is(3));
+    }
+    @Test
+    public void getFirstAndRemoveIt() {
+        assertThat(slc.getFirst(), is(1));
+        slc.removeFisrt();
+        assertThat(slc.getFirst(), is(2));
     }
     @Test
     public void getSize() {

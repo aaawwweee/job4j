@@ -29,6 +29,7 @@ public class SimpleListContainer<E> implements Iterable<E> {
         this.size++;
         modCount++;
     }
+
     public E get(int index) {
         Node<E> result = this.first;
         for (int i = 0; i < index; i++) {
@@ -36,34 +37,47 @@ public class SimpleListContainer<E> implements Iterable<E> {
         }
         return result.value;
     }
+
     public int getSize() {
         return this.size;
     }
-    public void removeLast() {
-        if (this.last.previous != null) {
-            this.last.previous.next = null;
+
+    public E removeLast() {
+        Node<E> last = this.last;
+        this.last = this.last.previous;
+        if (this.last == null) {
+            this.first = null;
+        } else {
+            this.last.next = null;
         }
-        this.last = last.previous;
         this.size--;
         this.modCount++;
+        last.previous = null;
+        return last.value;
     }
-    public void removeFirst() {
+
+    public E removeFisrt() {
+        Node<E> first = this.first;
         this.first = this.first.next;
         if (this.first == null) {
-            this.first = this.last;
+            this.last = null;
+        } else {
+            this.first.previous = null;
         }
-        this.first.next = null;
         this.size--;
-        modCount++;
-    }
-    public E getFirst() {
-        E value = this.first.value;
-        return value;
+        this.modCount++;
+        first.next = null;
+        return first.value;
     }
     public E getLast() {
         E value = this.last.value;
         return value;
     }
+    public E getFirst() {
+        E value = this.first.value;
+        return value;
+    }
+
     private class Node<E> {
         E value;
         Node<E> next;
@@ -73,6 +87,7 @@ public class SimpleListContainer<E> implements Iterable<E> {
         }
 
     }
+
     @Override
     public Iterator<E> iterator() {
         return new Iterator<E>() {

@@ -10,7 +10,7 @@ package list;
 
 public class SimpleStack<E> {
     SimpleListContainer<E> stackContainer;
-    
+
     public SimpleStack() {
         this.stackContainer = new SimpleListContainer<>();
     }

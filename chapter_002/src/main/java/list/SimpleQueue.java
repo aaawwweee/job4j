@@ -1,24 +1,25 @@
 package list;
 /**
+ * Queue based on 2 stacks
  * @author Alexander Kashkin (kashkinmsk@gmail.com)
  * @version 1
- * @since 28.05.2019
- * @param <E>
+ * @since 29.05.2019
+ * @param <E> generic
  */
 public class SimpleQueue<E> {
-    SimpleListContainer<E> queueContainer;
+    private SimpleStack<E> inbox = new SimpleStack<E>();
+    private SimpleStack<E> outbox = new SimpleStack<E>();
 
-    public SimpleQueue() {
-        this.queueContainer = new SimpleListContainer<>();
-    }
-
-    public void push(E value) {
-        queueContainer.add(value);
+    public void push(E item) {
+        inbox.push(item);
     }
 
     public E poll() {
-        E item = queueContainer.getFirst();
-        queueContainer.removeFirst();
-        return item;
+        if (outbox.getSize() == 0) {
+            while (inbox.getSize() != 0) {
+                outbox.push(inbox.poll());
+            }
+        }
+        return outbox.poll();
     }
 }

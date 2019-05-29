@@ -20,6 +20,9 @@ public class SimpleStack<E> {
         stackContainer.removeLast();
         return item;
     }
+    public int getSize() {
+        return stackContainer.getSize();
+    }
     public void push(E value) {
         stackContainer.add(value);
     }

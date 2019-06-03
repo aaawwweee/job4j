@@ -16,6 +16,7 @@ public class SimpleArrayContainerTest {
         sac.add(1);
         sac.add(2);
         sac.add(3);
+        sac.add(null);
         iterator = sac.iterator();
     }
     @Test
@@ -29,6 +30,7 @@ public class SimpleArrayContainerTest {
         assertThat(iterator.next(), is(2));
         assertThat(iterator.hasNext(), is(true));
         assertThat(iterator.next(), is(3));
-        assertThat(iterator.hasNext(), is(false));
+        assertThat(iterator.hasNext(), is(true));
+        assertNull(iterator.next());
     }
 }

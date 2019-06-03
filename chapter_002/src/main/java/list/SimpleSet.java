@@ -1,35 +1,37 @@
 package list;
 import java.util.Iterator;
+import java.util.Objects;
 
 /**
  * SimpleSet on ArrayContainer
  * @author Alexander Kashkin (kashkinmsk@gmail.com)
  * @since 02.06.2019
  * @version 1
- * @param <T> - generic
+ * @param <E> - generic
  */
 
-public class SimpleSet<T> implements Iterable<T> {
-    private SimpleArrayContainer<T> container;
+public class SimpleSet<E> implements Iterable<E> {
+    private SimpleArrayContainer<E> container;
 
     public SimpleSet() {
-        this.container = new SimpleArrayContainer<>();
+        this.container = new SimpleArrayContainer<E>();
     }
 
-    public boolean add(T value) {
+    public boolean add(E value) {
         boolean result = false;
         if (!checkDuplicate(value)) {
-            result = true;
             this.container.add(value);
+            result = true;
+
         }
         return result;
     }
 
-    private boolean checkDuplicate(T value) {
+    private boolean checkDuplicate(E value) {
         boolean result = false;
         if (this.container != null) {
             for(Object x : this.container) {
-                if (value.equals(x)) {
+                if (Objects.equals(x, value)) {
                     result = true;
                     break;
                 }
@@ -39,7 +41,7 @@ public class SimpleSet<T> implements Iterable<T> {
     }
 
     @Override
-    public Iterator<T> iterator() {
+    public Iterator<E> iterator() {
         return this.container.iterator();
     }
 }

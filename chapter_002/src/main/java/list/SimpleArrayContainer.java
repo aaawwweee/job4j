@@ -28,8 +28,12 @@ public class SimpleArrayContainer<E> implements Iterable<E> {
         if (count == container.length) {
             expansion();
         }
+        if (value == null) {
+            container[count++] = null;
+        } else {
+            container[count++] = value;
+        }
         modCount++;
-        container[count++] = value;
     }
 
     public E get(int index) {

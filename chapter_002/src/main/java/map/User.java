@@ -42,4 +42,5 @@ public class User {
     public void setBirthday(Calendar birthday) {
         this.birthday = birthday;
     }
+
 }

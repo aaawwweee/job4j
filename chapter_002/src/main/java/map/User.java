@@ -1,5 +1,6 @@
 package map;
 import java.util.Calendar;
+import java.util.Objects;
 
 /**
  * Class User
@@ -43,4 +44,11 @@ public class User {
         this.birthday = birthday;
     }
 
+    @Override
+    public int hashCode() {
+        int result = name != null ? name.hashCode() : 0;
+        result = 31 * result + children;
+        result = 31 * result + (birthday != null ? birthday.hashCode() : 0);
+        return result;
+    }
 }

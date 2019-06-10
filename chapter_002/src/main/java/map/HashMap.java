@@ -19,21 +19,19 @@ public class HashMap<K,V> implements Iterable{
         this.threshold = loadFactor * table.length;
     }
     boolean insert(K key, V value){
-        boolean result;
         if (size >= threshold) {
             threshold *= 2;
             this.increaseSize();
         }
+        boolean result = false;
         Node<K,V> node = new Node<>(key, value);
-        int index = this.hash(key);
-        if (this.table[index] != null) {
-            result = false;
-        } else {
-            this.table[index] = node;
+        int index = this.indexFor(key);
+        if (this.table[index] == null || (this.table[index] != null && this.table[index].getKey().equals(key))) {
+            this.table[index] = new Node<>(key, value);
+            this.size++;
+            this.modCount++;
             result = true;
         }
-        size++;
-        modCount++;
         return result;
     }
     private void increaseSize() {
@@ -47,56 +45,24 @@ public class HashMap<K,V> implements Iterable{
         }
     }
     V get(K key) {
-        V result = null;
-        int index = this.hash(key);
-        if (this.table[index]!= null) {
-            Node<K,V> current = this.table[index];
-            result = current.value;
-        }
-        return result;
+        int index = this.indexFor(key);
+        return this.table[index] != null && this.table[index].getKey().equals(key) ? this.table[index].getValue() : null;
     }
 
     boolean delete(K key){
         boolean result = false;
-        int index = this.hash(key);
-        if (this.table[index] != null) {
+        int index = this.indexFor(key);
+        if (this.table[index].getKey().equals(key)) {
             this.table[index] = null;
             result = true;
+            this.size--;
+            this.modCount++;
         }
-        size--;
-        modCount++;
         return result;
     }
 
-    public int hash(K key) {
+    public int indexFor(K key) {
         return key.hashCode() % table.length;
-    }
-
-    @Override
-    public Iterator iterator() {
-        return new Iterator() {
-            private int current = -1;
-            private int expectedModCount = modCount;
-            @Override
-            public boolean hasNext() {
-                return current < table.length;
-            }
-
-            @Override
-            public K next() {
-                if (expectedModCount != modCount) {
-                    throw new ConcurrentModificationException();
-                }
-                if (!this.hasNext()) {
-                    throw new NoSuchElementException();
-                }
-                current++;
-                while (table[current] == null) {
-                    current++;
-                }
-                return table[current].key;
-            }
-        };
     }
 
     static class Node<K,V> {
@@ -106,5 +72,48 @@ public class HashMap<K,V> implements Iterable{
             this.key = key;
             this.value = value;
         }
+
+        public K getKey() {
+            return key;
+        }
+
+        public V getValue() {
+            return value;
+        }
+    }
+
+    @Override
+    public Iterator<V> iterator() {
+        return new Iterator<V>() {
+            final int expectedModCount = modCount;
+            int itIndex = 0;
+            @Override
+            public boolean hasNext() {
+                checkForComodification();
+                boolean result = false;
+                for (int i = itIndex; i < table.length; i++) {
+                    if (table[i] != null) {
+                        itIndex = i;
+                        result = true;
+                        break;
+                    }
+                }
+                return result;
+            }
+            @Override
+            public V next() {
+                checkForComodification();
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                Node result = table[itIndex++];
+                return (V) result.value;
+            }
+            void checkForComodification() {
+                if (modCount != expectedModCount) {
+                    throw new ConcurrentModificationException();
+                }
+            }
+        };
     }
 }

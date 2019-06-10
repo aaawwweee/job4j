@@ -20,11 +20,11 @@ public class HashMapTest {
         assertThat(map.delete(1), is(true));
         Iterator it = map.iterator();
         assertThat(it.hasNext(), is(true));
-        assertThat(it.next(), is(2));
+        assertThat(it.next(), is("Сидоров"));
         assertThat(it.hasNext(), is(true));
-        assertThat(it.next(), is(4));
+        assertThat(it.next(), is("Морозов"));
         assertThat(it.hasNext(), is(true));
-        assertThat(it.next(), is(5));
-        assertThat(it.hasNext(), is(true));
+        assertThat(it.next(), is("Холодов"));
+        assertThat(it.hasNext(), is(false));
     }
 }

@@ -16,20 +16,13 @@ public class Tree<E extends Comparable<E>> implements SimpleTree<E>{
     @Override
     public boolean add(E parent, E child) {
         boolean result =  false;
-        Optional<Node<E>> checkIt = findBy(parent);
-        if (checkIt.isPresent()) {
-            Node<E> parentValue = checkIt.get();
-            boolean duplicate = false;
-            for (Node<E> node : parentValue.leaves()) {
-                if (node.eqValue(child)) {
-                    duplicate = true;
-                    break;
-                }
-            }
-            if (!duplicate) {
-                parentValue.add(new Node<E>(child));
-                result = true;
-            }
+        Optional<Node<E>> checkParent = findBy(parent);
+        Optional<Node<E>> checkChild = findBy(child);
+        if (checkParent.isPresent() && checkChild.isEmpty()) {
+            checkParent.get().add(new Node<>(child));
+            result = true;
+        } else if (checkParent.isEmpty()) {
+            throw new NoSuchElementException("The specified parent is not exists.");
         }
         return result;
     }

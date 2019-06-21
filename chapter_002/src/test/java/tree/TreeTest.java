@@ -1,6 +1,9 @@
 package tree;
 
 import org.junit.Test;
+
+import java.util.NoSuchElementException;
+
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.*;
 
@@ -29,14 +32,13 @@ public class TreeTest {
         );
     }
 
-    @Test
-    public void whenIsBoolean() {
+    @Test(expected = NoSuchElementException.class)
+    public void whenThrowsNSEE() {
         Tree<Integer> tree = new Tree<>(2);
-        tree.add(2, 4);
-        tree.add(2, 5);
-        tree.add(3, 9);
-        tree.add(5, 6);
-        tree.add(5, 7);
+        tree.add(1, 2);
+        tree.add(1, 4);
+        tree.add(1, 5);
+        tree.add(3, 10);
         assertThat(tree.isBinary(), is(true));
     }
 }

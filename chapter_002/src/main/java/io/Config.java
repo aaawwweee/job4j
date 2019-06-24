@@ -5,7 +5,11 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
 import java.util.stream.Collectors;
-
+/**
+ * @author Alexander Kashkin (kashkinmsk@gmail.com)
+ * @since 21.06.2019
+ * @version 2
+ */
 public class Config {
     private final String path;
     private final Map<String, String> values = new HashMap<String, String>();

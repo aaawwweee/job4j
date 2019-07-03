@@ -17,8 +17,8 @@ public class AnalizyTest {
 
     @Test
     public void whenItsWorking() throws Exception {
-        String source = "C:/projects/job4j/server.log";
-        String target = "C:/projects/job4j/unavailable.csv";
+        String source = System.getProperty("java.io.tmpdir") + "server.log";
+        String target = System.getProperty("java.io.tmpdir")+ "unavailable.csv";
         analizy.unavailable(source, target);
         BufferedReader reader = new BufferedReader(new FileReader(target));
         assertThat(reader.readLine(), is("10:58:01;10:59:01"));

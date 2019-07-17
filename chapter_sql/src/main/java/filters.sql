@@ -1,3 +1,8 @@
+CREATE TABLE type_of_product (
+  ID SERIAL PRIMARY KEY,
+  name_of_type CHARACTER VARYING(20)
+);
+
 CREATE TABLE product(
 	ID SERIAL PRIMARY KEY,
 	name_of_product CHARACTER VARYING(20),

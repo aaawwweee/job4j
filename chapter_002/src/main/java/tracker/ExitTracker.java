@@ -12,7 +12,7 @@ public class ExitTracker extends BaseAction {
     }
 
     @Override
-    public void execute(Input input, Tracker tracker, Consumer<String> output) {
+    public void execute(Input input, ITracker tracker, Consumer<String> output) {
         output.accept("Have a nice day. Goodbye.");
         this.ui.stop();
     }

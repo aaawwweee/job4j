@@ -18,7 +18,7 @@ public class Config {
         this.path = path;
     }
 
-    public void load(){
+    public void load() {
         List<String> temps = new ArrayList<>();
         try (BufferedReader read = new BufferedReader(new FileReader(this.path))) {
             temps = read.lines().filter(x -> x.contains("=")).collect(Collectors.toList());
@@ -27,7 +27,7 @@ public class Config {
         }
         for (String temp : temps) {
             while (temp.contains(" ")) {
-                String x = temp.replace(" ","");
+                String x = temp.replace(" ", "");
                 temp = x;
             }
             if (temp.contains("#")) {

@@ -50,6 +50,6 @@ public class SearchTest {
         file6.createNewFile();
         Search search = new Search();
         assertThat(search.fileWithExts(System.getProperty("java.io.tmpdir"), List.of("txt")),
-                is(List.of(file1,file3)));
+                is(List.of(file1, file3)));
     }
 }

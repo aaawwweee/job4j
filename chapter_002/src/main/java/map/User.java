@@ -46,13 +46,21 @@ public class User {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;//проверяем равенство объекта самому себе
-        if (o == null || getClass() != o.getClass()) return false; //проверяем, не равен ли он null, проверяем классы
+        if (this == o) {
+            return true; //проверяем равенство объекта самому себе
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false; //проверяем, не равен ли он null, проверяем классы
+        }
 
-        User user = (User) o;//проверили instance, теперь поля
+        User user = (User) o; //проверили instance, теперь поля
 
-        if (children != user.children) return false; //сравнение int
-        if (name != null ? !name.equals(user.name) : user.name != null) return false; // сравнение ссылочных типов
+        if (children != user.children) {
+            return false; //сравнение int
+        }
+        if (name != null ? !name.equals(user.name) : user.name != null) {
+            return false; // сравнение ссылочных типов
+        }
         return birthday != null ? birthday.equals(user.birthday) : user.birthday == null;
     }
 

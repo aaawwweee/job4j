@@ -15,7 +15,7 @@ public class Analizy {
         try (BufferedReader read = new BufferedReader(new FileReader(source))) {
             boolean checkServer = true;
             List<String> list = new ArrayList<>();
-            while(read.ready()) {
+            while (read.ready()) {
                 String check = read.readLine();
                 if (checkServer) {
                     if (check.contains("400") || check.contains("500")) {

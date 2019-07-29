@@ -36,7 +36,8 @@ public class Client {
                  request = in.readLine();
                  System.out.println("Сообщение от сервера: " + request);
                  if ("exit".equals(request)) {
-                     while (!(response = in.readLine()).isEmpty()) {
+                     response = in.readLine();
+                     while (!(response.isEmpty())) {
                          System.out.println(response);
                      }
                  }

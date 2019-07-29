@@ -7,7 +7,7 @@ package list;
  * @version 1
  */
 public class NodeList {
-    public boolean hasCycle (Node first) {
+    public boolean hasCycle(Node first) {
         Node tortoise = first;
         Node hare = first;
         while (hare != null && hare.next != null) {

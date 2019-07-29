@@ -8,9 +8,9 @@ import java.util.*;
  * @param <K> key
  * @param <V> value
  */
-public class HashMap<K,V> implements Iterable{
+public class HashMap<K, V> implements Iterable {
     private int modCount = 0;
-    private Node<K,V>[] table;
+    private Node<K, V>[] table;
     private int size = 0;
     private float threshold;
     private final float loadFactor = 0.75f;
@@ -18,13 +18,13 @@ public class HashMap<K,V> implements Iterable{
         this.table = new Node[10];
         this.threshold = loadFactor * table.length;
     }
-    boolean insert(K key, V value){
+    boolean insert(K key, V value) {
         if (size >= threshold) {
             threshold *= 2;
             this.increaseSize();
         }
         boolean result = false;
-        Node<K,V> node = new Node<>(key, value);
+        Node<K, V> node = new Node<>(key, value);
         int index = this.indexFor(key);
         if (this.table[index] == null || (this.table[index] != null && this.table[index].getKey().equals(key))) {
             this.table[index] = new Node<>(key, value);
@@ -35,10 +35,10 @@ public class HashMap<K,V> implements Iterable{
         return result;
     }
     private void increaseSize() {
-        Node<K,V>[] oldTable = this.table;
+        Node<K, V>[] oldTable = this.table;
         this.table = new Node[oldTable.length * 2];
         size = 0;
-        for (Node<K,V> node : oldTable) {
+        for (Node<K, V> node : oldTable) {
             if (node != null) {
                 this.insert(node.key, node.value);
             }
@@ -49,7 +49,7 @@ public class HashMap<K,V> implements Iterable{
         return this.table[index] != null && this.table[index].getKey().equals(key) ? this.table[index].getValue() : null;
     }
 
-    boolean delete(K key){
+    boolean delete(K key) {
         boolean result = false;
         int index = this.indexFor(key);
         if (this.table[index].getKey().equals(key)) {
@@ -65,7 +65,7 @@ public class HashMap<K,V> implements Iterable{
         return key.hashCode() % table.length;
     }
 
-    static class Node<K,V> {
+    static class Node<K, V> {
         K key;
         V value;
         Node(K key, V value) {

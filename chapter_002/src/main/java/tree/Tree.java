@@ -6,8 +6,8 @@ import java.util.*;
  * @version 1
  */
 
-public class Tree<E extends Comparable<E>> implements SimpleTree<E>{
-    Node <E> root;
+public class Tree<E extends Comparable<E>> implements SimpleTree<E> {
+    Node<E> root;
 
     public Tree(E value) {
         this.root = new Node(value);
@@ -68,9 +68,9 @@ public class Tree<E extends Comparable<E>> implements SimpleTree<E>{
 
     @Override
     public Optional<Node<E>> findBy(E value) {
-        Optional<Node<E>> rsl = Optional.empty();//rsl - optional instance
-        Queue<Node<E>> data = new LinkedList<>();//создаем очередь data
-        data.offer(this.root);//до
+        Optional<Node<E>> rsl = Optional.empty(); //rsl - optional instance
+        Queue<Node<E>> data = new LinkedList<>(); //создаем очередь data
+        data.offer(this.root); //до
         while (!data.isEmpty()) {
             Node<E> el = data.poll();
             if (el.eqValue(value)) {

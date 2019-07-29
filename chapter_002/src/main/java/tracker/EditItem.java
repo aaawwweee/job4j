@@ -14,7 +14,7 @@ public class EditItem extends BaseAction {
     }
 
     @Override
-    public void execute(Input input, Tracker tracker, Consumer<String> output) {
+    public void execute(Input input, ITracker tracker, Consumer<String> output) {
         output.accept("---------- Edit the Item ----------");
         String id = input.ask("Please, enter the Item's ID: ");
         String name = input.ask("Enter the Item's Name: ");

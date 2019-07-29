@@ -29,7 +29,7 @@ public class Zip {
      * @param source - лист файлов
      * @param target - файл-зип для записи файлов коллекции
      */
-    void pack(List<File> source, File target){
+    void pack(List<File> source, File target) {
         try (ZipOutputStream zip = new ZipOutputStream(new BufferedOutputStream(new FileOutputStream(target)))) {
             for (File file : source) {
                 zip.putNextEntry(new ZipEntry(

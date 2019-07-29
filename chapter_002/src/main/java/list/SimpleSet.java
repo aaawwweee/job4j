@@ -30,7 +30,7 @@ public class SimpleSet<E> implements Iterable<E> {
     private boolean checkDuplicate(E value) {
         boolean result = false;
         if (this.container != null) {
-            for(Object x : this.container) {
+            for (Object x : this.container) {
                 if (Objects.equals(x, value)) {
                     result = true;
                     break;

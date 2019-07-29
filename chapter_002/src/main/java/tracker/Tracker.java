@@ -8,7 +8,7 @@ import java.util.*;
  * @version 1
  */
 
-public class Tracker {
+public class Tracker implements ITracker {
     private final List<Item> items = new ArrayList<>();
     private int position = 0;
     private static final Random RN = new Random();

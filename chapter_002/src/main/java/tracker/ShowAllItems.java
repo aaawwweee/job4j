@@ -15,7 +15,7 @@ public class ShowAllItems extends BaseAction {
         super(key, name);
     }
     @Override
-    public void execute(Input input, Tracker tracker, Consumer<String> output) {
+    public void execute(Input input, ITracker tracker, Consumer<String> output) {
         output.accept("---------- Show all Items ----------");
         List<Item> items = tracker.findAll();
         for (Item item : items) {

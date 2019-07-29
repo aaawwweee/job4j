@@ -13,7 +13,7 @@ public class AnalizyTest {
     public void whenItsWorking() throws Exception {
         Analizy analizy = new Analizy();
         String source = System.getProperty("java.io.tmpdir") + "server.log";
-        String target = System.getProperty("java.io.tmpdir")+ "unavailable.csv";
+        String target = System.getProperty("java.io.tmpdir") + "unavailable.csv";
         try (PrintWriter out = new PrintWriter(new FileOutputStream(source))) {
             out.println("200 10:56:01");
             out.println("200 10:57:01");

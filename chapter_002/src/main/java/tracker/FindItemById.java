@@ -15,7 +15,7 @@ public class FindItemById extends BaseAction {
     }
 
     @Override
-    public void execute(Input input, Tracker tracker, Consumer<String> output) {
+    public void execute(Input input, ITracker tracker, Consumer<String> output) {
         output.accept("---------- Find Item by ID ----------");
         String id = input.ask("Please, enter the Item's ID: ");
         Item item = tracker.findById(id);

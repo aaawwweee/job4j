@@ -23,7 +23,7 @@ public class AnalyzeTest {
     public void when2ObjectsDeleted1Renamed1Added() {
         curr.add(new Analyze.User(1, "Misha"));
         curr.add(new Analyze.User(4, "Pasha"));
-        Analyze.Info result = analyze.diff(prev,curr);
+        Analyze.Info result = analyze.diff(prev, curr);
         assertThat(result.added, is(1));
         assertThat(result.changed, is(1));
         assertThat(result.deleted, is(2));

@@ -39,7 +39,7 @@ public class StartUITest {
     }
     @Test
     public void whenShowAllItems() {
-        Tracker tracker = new Tracker();
+        ITracker tracker = new Tracker();
         Item item = tracker.add(new Item("testname", "testdesc"));
         Input input = new StubInput(new String[]{"1", "6"});
         new StartUI(input, tracker, output).init();
@@ -57,7 +57,7 @@ public class StartUITest {
     }
     @Test
     public void whenFindByName() {
-        Tracker tracker = new Tracker();
+        ITracker tracker = new Tracker();
         Item item = tracker.add(new Item("testname", "testdesc"));
         Input input = new StubInput(new String[]{"5", item.getName(), "6"});
         new StartUI(input, tracker, output).init();
@@ -75,7 +75,7 @@ public class StartUITest {
     }
     @Test
     public void whenFindById() {
-        Tracker tracker = new Tracker();
+        ITracker tracker = new Tracker();
         Item item = tracker.add(new Item("testname", "testdesc"));
         Input input = new StubInput(new String[]{"4", item.getId(), "6"});
         new StartUI(input, tracker, output).init();
@@ -94,7 +94,7 @@ public class StartUITest {
     }
     @Test
     public void whenFindByIdThenNoElement() {
-        Tracker tracker = new Tracker();
+        ITracker tracker = new Tracker();
         String id = "2019";
         Input input = new StubInput(new String[]{"4", id, "6"});
         new StartUI(input, tracker, output).init();
@@ -102,14 +102,14 @@ public class StartUITest {
     }
     @Test
     public void whenAddItem() {
-        Tracker tracker = new Tracker();
+        ITracker tracker = new Tracker();
         Input input = new StubInput(new String[]{"0", "test name", "desc", "6"});
         new StartUI(input, tracker, output).init();
         assertThat(tracker.findAll().get(0).getName(), is("test name"));
     }
     @Test
     public void whenReplaceItem() {
-        Tracker tracker = new Tracker();
+        ITracker tracker = new Tracker();
         Item item = tracker.add(new Item("testname", "testdesc"));
         Input input = new StubInput(new String[]{"2", item.getId(), "test replace", "replacing item", "6"});
         new StartUI(input, tracker, output).init();
@@ -117,7 +117,7 @@ public class StartUITest {
     }
     @Test
     public void whenDeleteItem() {
-        Tracker tracker = new Tracker();
+        ITracker tracker = new Tracker();
         List<Item> items = new ArrayList<>();
         items.add(new Item("testname", "testdesc"));
         Input input = new StubInput(new String[]{"3", items.get(0).getId(), "6"});

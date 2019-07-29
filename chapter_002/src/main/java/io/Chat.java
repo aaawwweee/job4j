@@ -10,7 +10,7 @@ public class Chat {
     Scanner sc;
 
     public void chatting(File fileReader, File fileWriter) {
-        try (BufferedReader reader = new BufferedReader(new FileReader(fileReader.getAbsolutePath()))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(fileReader))) {
             sc = new Scanner(System.in);
             String phrase = sc.nextLine();
             String stop = "стоп";
@@ -18,7 +18,7 @@ public class Chat {
             String finish = "закончить";
             String answer = getRandomPhraseFromFile(fileReader);
             try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileWriter))) {
-            while(!phrase.equals(finish)) {
+            while (!phrase.equals(finish)) {
                 System.out.println(answer);
                 answer = getRandomPhraseFromFile(fileReader);
                 writer.write(phrase + System.lineSeparator());
@@ -55,10 +55,10 @@ public class Chat {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return words.get((int)(Math.random() * words.size()));
+        return words.get((int) (Math.random() * words.size()));
     }
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         Chat chat = new Chat();
         String source = System.getProperty("java.io.tmpdir") + "chat.log";
         String target = System.getProperty("java.io.tmpdir") + "answers.log";

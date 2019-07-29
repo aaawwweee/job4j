@@ -19,7 +19,7 @@
 	   <module>chess</module>
 	   <module>tictactoe</module>
         <module>chapter_002</module>
-        <module><![CDATA[chapter_sql&jdbc]]></module>
+        <module>chapter_sql_jdbc</module>
     </modules>
 
     <dependencies>

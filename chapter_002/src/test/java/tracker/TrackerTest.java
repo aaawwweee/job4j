@@ -18,7 +18,7 @@ public class TrackerTest {
     }
     @Test
     public void whenReplaceItem() {
-        Tracker tracker = new Tracker();
+        ITracker tracker = new Tracker();
         Item previous = new Item("testname", "testdesc", 123L);
         tracker.add(previous);
         Item next = new Item("testname2", "testdesc2", 1234L);
@@ -28,7 +28,7 @@ public class TrackerTest {
     }
     @Test
     public void whenFindByName() {
-        Tracker tracker = new Tracker();
+        ITracker tracker = new Tracker();
         Item item1 = new Item("testname1", "testdesc1", 1L);
         Item item2 = new Item("testname1", "testdesc2", 2L);
         Item item3 = new Item("testname3", "testdesc3", 3L);
@@ -43,7 +43,7 @@ public class TrackerTest {
     }
     @Test
     public void whenDeleteItem() {
-        Tracker tracker = new Tracker();
+        ITracker tracker = new Tracker();
         Item item1 = new Item("testname1", "testdesc1", 1L);
         Item item2 = new Item("testname1", "testdesc2", 2L);
         Item item3 = new Item("testname3", "testdesc3", 3L);
@@ -55,7 +55,7 @@ public class TrackerTest {
     }
     @Test
     public void whenFindById() {
-        Tracker tracker = new Tracker();
+        ITracker tracker = new Tracker();
         Item item1 = new Item("testname1", "testdesc1", 123L);
         tracker.add(item1);
         Item result = tracker.findById(item1.getId());
@@ -63,7 +63,7 @@ public class TrackerTest {
     }
     @Test
     public void whenFindAll() {
-        Tracker tracker = new Tracker();
+        ITracker tracker = new Tracker();
         Item item1 = new Item("testname1", "testdesc1", 1L);
         Item item2 = new Item("testname2", "testdesc2", 2L);
         Item item3 = new Item("testname3", "testdesc3", 3L);

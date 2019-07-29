@@ -37,34 +37,23 @@ public class Item {
         return desc;
     }
 
-    public void setDesc(String desc) {
-        this.desc = desc;
-    }
-
-    public long getTime() {
-        return time;
-    }
-
-    public void setTime(long time) {
-        this.time = time;
-    }
     @Override
     public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
         Item item = (Item) o;
-        return time == item.time
-                && Objects.equals(id, item.id)
-                && Objects.equals(name, item.name)
-                && Objects.equals(desc, item.desc);
+
+        if (id != null ? !id.equals(item.id) : item.id != null) return false;
+        if (name != null ? !name.equals(item.name) : item.name != null) return false;
+        return desc != null ? desc.equals(item.desc) : item.desc == null;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, desc, time);
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + (desc != null ? desc.hashCode() : 0);
+        return result;
     }
 }

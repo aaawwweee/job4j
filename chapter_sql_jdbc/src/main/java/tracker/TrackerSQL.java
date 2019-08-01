@@ -75,8 +75,10 @@ public class TrackerSQL implements ITracker, AutoCloseable {
             st.setString(1, item.getName());
             st.setString(2, item.getDesc());
             st.setInt(3, Integer.parseInt(id));
-            st.execute();
-            result = true;
+            int update = st.executeUpdate();
+            if (update > 0) {
+                result = true;
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -88,8 +90,10 @@ public class TrackerSQL implements ITracker, AutoCloseable {
         boolean result = false;
         try (PreparedStatement st = connection.prepareStatement(DELETE_ITEM)) {
             st.setInt(1, Integer.parseInt(id));
-            st.execute();
-            result = true;
+            int update = st.executeUpdate();
+            if (update > 0) {
+                result = true;
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
